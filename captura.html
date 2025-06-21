@@ -29,22 +29,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .loading-text {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .result {
-            display: none;
-            text-align: center;
-        }
-        .result img {
-            width: 100%;
-            max-width: 350px;
-            filter: blur(2px);
-            border-radius: 10px;
-            margin-top: 15px;
-        }
         .unlock-button, .start-video-button {
             display: block;
             background-color: #25D366;
@@ -71,31 +55,43 @@
         h2 {
             margin-top: 10px;
         }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-<h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
+<!-- Fase 1: Apenas o botão -->
+<div id="startPhase">
+    <div class="start-video-button" onclick="startTracking()">▶️ Iniciar Rastreamento</div>
+</div>
 
-<!-- Botão para o usuário ativar o vídeo com áudio -->
-<div class="start-video-button" onclick="startVideo()">▶️ Iniciar Rastreamento</div>
+<!-- Fase 2: Título + Vídeo + Loading -->
+<div id="loadingPhase" class="hidden">
+    <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
 
-<!-- Área onde o vídeo vai aparecer após o clique -->
-<div id="videoContainer" style="width:100%; margin-top:20px;"></div>
+    <div id="videoContainer" style="width:100%; margin-top:20px;"></div>
 
-<div class="spinner"></div>
-<p class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
+    <div class="spinner"></div>
+    <p class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
+</div>
 
-<div class="result" id="result">
+<!-- Fase 3: Resultado -->
+<div class="result hidden" id="result">
     <h2>✅ Localização Encontrada!</h2>
     <p>Para desbloquear e ver o endereço exato, clique no botão abaixo:</p>
-    <img src="static/images/mapa_blur.png" alt="Mapa Localização">
+    <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px; margin-top:15px;">
     <a href="#pagamento" class="unlock-button">🔓 Desbloquear Agora!</a>
 </div>
 
 <script>
-function startVideo() {
-    // Carrega o vídeo com áudio só após o clique
+function startTracking() {
+    // Esconde o botão inicial
+    document.getElementById('startPhase').style.display = 'none';
+
+    // Mostra a fase de loading
+    document.getElementById('loadingPhase').style.display = 'block';
+
+    // Insere o vídeo com autoplay + áudio
     document.getElementById('videoContainer').innerHTML = `
         <div style="position:relative; width:100%; height:0; padding-bottom:56.25%;">
             <iframe src="https://streamable.com/e/htq2jt?autoplay=1" 
@@ -103,16 +99,13 @@ function startVideo() {
                     style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>
         </div>
     `;
-    // Opcional: esconder o botão após o clique
-    document.querySelector('.start-video-button').style.display = 'none';
-}
 
-setTimeout(function() {
-    document.querySelector('.spinner').style.display = 'none';
-    document.querySelector('.loading-text').style.display = 'none';
-    document.getElementById('loading-title').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-}, 240000);
+    // Após 4 minutos (240000 ms), mostra o resultado
+    setTimeout(function() {
+        document.getElementById('loadingPhase').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+    }, 240000);  // 4 minutos
+}
 </script>
 
 </body>
