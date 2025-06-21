@@ -131,25 +131,12 @@ function startTracking() {
 }
 
 function scrollToBottomSmooth() {
-    let lastScrollHeight = 0;
-
-    function tryScroll() {
+    setTimeout(function() {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
-
-        // Verifica após 500ms se a altura da página mudou (ex: imagens carregando depois)
-        setTimeout(() => {
-            const currentHeight = document.body.scrollHeight;
-            if (currentHeight > lastScrollHeight) {
-                lastScrollHeight = currentHeight;
-                tryScroll();  // Tenta de novo se a página ainda está crescendo
-            }
-        }, 500);
-    }
-
-    tryScroll();
+    }, 300);
 }
 </script>
 
