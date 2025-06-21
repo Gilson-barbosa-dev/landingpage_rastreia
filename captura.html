@@ -81,14 +81,12 @@
     <div class="start-video-button" onclick="startTracking()">✅ Iniciar Rastreamento</div>
 </div>
 
-<!-- Fase 2: Vídeo -->
-<div id="videoPhase" class="hidden">
-    <div id="videoContainer" class="video-container"></div>
-</div>
-
-<!-- Fase 2.1: Loading -->
-<div id="loadingTexts" class="hidden">
+<!-- Fase 2: Título + Vídeo + Loading -->
+<div id="loadingPhase" class="hidden">
     <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
+
+    <div id="videoContainer" class="video-container"></div>
+
     <div id="spinner" class="spinner"></div>
     <p id="loading-text" class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
 </div>
@@ -104,8 +102,7 @@
 <script>
 function startTracking() {
     document.getElementById('startPhase').style.display = 'none';
-    document.getElementById('videoPhase').style.display = 'block';
-    document.getElementById('loadingTexts').style.display = 'block';
+    document.getElementById('loadingPhase').style.display = 'block';
 
     document.getElementById('videoContainer').innerHTML = `
         <iframe src="https://streamable.com/e/htq2jt?autoplay=1" 
@@ -114,7 +111,9 @@ function startTracking() {
     `;
 
     setTimeout(function() {
-        document.getElementById('loadingTexts').style.display = 'none';
+        document.getElementById('loading-title').style.display = 'none';
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('loading-text').style.display = 'none';
         document.getElementById('result').style.display = 'block';
     }, 240000);  // 4 minutos
 }
