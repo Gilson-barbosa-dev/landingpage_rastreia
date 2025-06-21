@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Rastreio Parceiro - Investigação Gratuita</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/images/fundo.jpg');
+            background-repeat: repeat;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .topbar {
+            background: linear-gradient(90deg, #075e54, #128c7e);
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2e7d32;
+            font-size: 20px;
+        }
+        h2 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .image-top img {
+            width: 250px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            height: 38px;
+            box-sizing: border-box;
+        }
+        .cta-button {
+            display: block;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            margin-top: 15px;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 0 rgba(37, 211, 102, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .cta-button:hover {
+            background-color: #1ebe5d;
+        }
+        .features {
+            text-align: left;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .features ul {
+            padding-left: 20px;
+        }
+        .highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .stats {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    Parabéns... Você ganhou uma INVESTIGAÇÃO GRATUITA!
+</div>
+
+<div class="container">
+
+    <h1>Descubra mensagens suspeitas, locais duvidosos e muito mais!</h1>
+
+    <div class="image-top">
+        <img src="static/images/logo.svg" alt="Imagem Espião">
+    </div>
+
+    <h2>Digite abaixo o número que deseja rastrear:</h2>
+    <input type="tel" id="telefone" placeholder="Exemplo: (11) 90000-0000">
+
+    <div class="cta-button" id="btn-acessar">✅ Acessar Rastreamento Agora!</div>
+
+    <p style="font-size: 12px; color: #555; margin-top: 10px;">🔒 Dados protegidos com criptografia.</p>
+
+    <div class="features">
+        <h3>✅ O que você vai conseguir ver:</h3>
+        <ul>
+            <li>📍 Localização exata em tempo real</li>
+            <li>📲 Histórico de locais visitados</li>
+            <li>🕵️‍♂️ 100% invisível, sem notificações</li>
+        </ul>
+
+        <h3 class="highlight">Esta ferramenta é 100% anônima</h3>
+        <p><strong>Como funciona?</strong><br> Você envia um link, a pessoa clica e pronto... Localização capturada!</p>
+    </div>
+
+    <div class="stats">
+        <p>📈 <strong>95.234</strong> números rastreados com sucesso</p>
+        <p>🕑 Ferramenta atualizada: Sexta-Feira, 20 de Junho de 2025</p>
+    </div>
+
+    <div class="footer">
+        <p>Política de Privacidade e Cookies</p>
+        <p>© 2025 – Todos os Direitos Reservados</p>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const telefoneInput = document.getElementById('telefone');
+    const botao = document.getElementById('btn-acessar');
+
+    // Máscara de telefone
+    telefoneInput.addEventListener('input', function(e) {
+        let valor = e.target.value;
+        valor = valor.replace(/\D/g, '');
+
+        if (valor.length <= 10) {
+            valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        } else {
+            valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+
+        e.target.value = valor;
+    });
+
+    // Validação e redirecionamento
+    botao.addEventListener('click', function() {
+        const numero = telefoneInput.value.trim();
+        if (numero.length < 14) {  // Exemplo: formato mínimo esperado: (11) 90000-0000
+            alert('Por favor, preencha um número de telefone válido.');
+        } else {
+            window.location.href = 'pagina_vendas2.html';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
