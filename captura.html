@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>Localizando o Número...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Clarity Script -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "s355u53m2d");
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,15 +82,6 @@
             margin: 15px auto;
         }
     </style>
-    
-<!-- Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s355u53m2d");
-</script>
 </head>
 <body>
 
@@ -125,12 +126,17 @@ function startTracking() {
         document.getElementById('loading-text').style.display = 'none';
         document.getElementById('result').style.display = 'block';
 
-        // Scroll automático até o final
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
-        });
+        scrollToBottom();
     }, 240000);  // 4 minutos
+}
+
+function scrollToBottom() {
+    const scrollInterval = setInterval(() => {
+        window.scrollBy(0, 50);
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            clearInterval(scrollInterval);
+        }
+    }, 20);
 }
 </script>
 
