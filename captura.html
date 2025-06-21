@@ -57,7 +57,6 @@
         }
         .hidden { display: none; }
     </style>
-</head>
     <!-- Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -66,6 +65,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s355u53m2d");
     </script>
+</head>
 <body>
 
 <!-- Fase 1: Tela inicial -->
@@ -74,12 +74,14 @@
     <div class="start-video-button" onclick="startTracking()">✅ Iniciar Rastreamento</div>
 </div>
 
-<!-- Fase 2: Localizando... + Vídeo + Loading -->
-<div id="loadingPhase" class="hidden">
-    <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
-
+<!-- Fase 2: Apenas o vídeo (fica visível o tempo todo após o clique) -->
+<div id="videoPhase" class="hidden">
     <div id="videoContainer" style="width:100%; margin-top:20px;"></div>
+</div>
 
+<!-- Fase 2.1: Loading (título + spinner + texto de aguarde) -->
+<div id="loadingTexts" class="hidden">
+    <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
     <div id="spinner" class="spinner"></div>
     <p id="loading-text" class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
 </div>
@@ -94,11 +96,14 @@
 
 <script>
 function startTracking() {
-    // Esconde a primeira tela
+    // Esconde a tela inicial
     document.getElementById('startPhase').style.display = 'none';
 
-    // Mostra o loading + vídeo
-    document.getElementById('loadingPhase').style.display = 'block';
+    // Mostra o vídeo
+    document.getElementById('videoPhase').style.display = 'block';
+
+    // Mostra o texto de loading
+    document.getElementById('loadingTexts').style.display = 'block';
 
     // Insere o vídeo com autoplay e áudio
     document.getElementById('videoContainer').innerHTML = `
@@ -109,15 +114,11 @@ function startTracking() {
         </div>
     `;
 
-    // Após 4 minutos, esconde título + spinner + loading text, mas mantém o vídeo
+    // Após 4 minutos, some os textos de loading, mas mantém o vídeo
     setTimeout(function() {
-        document.getElementById('loading-title').style.display = 'none';
-        document.getElementById('spinner').style.display = 'none';
-        document.getElementById('loading-text').style.display = 'none';
-
-        // Exibe o resultado
+        document.getElementById('loadingTexts').style.display = 'none';
         document.getElementById('result').style.display = 'block';
-    }, 240000);  // 4 minutos (240.000 ms)
+    }, 240000);  // 4 minutos
 }
 </script>
 
