@@ -106,7 +106,7 @@
     <h2>✅ Localização Encontrada!</h2>
     <p>Para desbloquear e ver o endereço exato, clique no botão abaixo:</p>
     <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
-    <a href="https://go.perfectpay.com.br/PPU38CPR584" class="unlock-button">🔓 Desbloquear Agora!</a>
+    <a href="#pagamento" class="unlock-button">🔓 Desbloquear Agora!</a>
 </div>
 
 <script>
@@ -126,17 +126,30 @@ function startTracking() {
         document.getElementById('loading-text').style.display = 'none';
         document.getElementById('result').style.display = 'block';
 
-        scrollToBottom();
+        scrollToBottomSmooth();
     }, 240000);  // 4 minutos
 }
 
-function scrollToBottom() {
-    const scrollInterval = setInterval(() => {
-        window.scrollBy(0, 50);
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            clearInterval(scrollInterval);
-        }
-    }, 20);
+function scrollToBottomSmooth() {
+    let lastScrollHeight = 0;
+
+    function tryScroll() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+
+        // Verifica após 500ms se a altura da página mudou (ex: imagens carregando depois)
+        setTimeout(() => {
+            const currentHeight = document.body.scrollHeight;
+            if (currentHeight > lastScrollHeight) {
+                lastScrollHeight = currentHeight;
+                tryScroll();  // Tenta de novo se a página ainda está crescendo
+            }
+        }, 500);
+    }
+
+    tryScroll();
 }
 </script>
 
