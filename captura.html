@@ -45,7 +45,7 @@
             border-radius: 10px;
             margin-top: 15px;
         }
-        .unlock-button {
+        .unlock-button, .start-video-button {
             display: block;
             background-color: #25D366;
             color: white;
@@ -58,8 +58,9 @@
             max-width: 350px;
             box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
             animation: pulse 1.5s infinite;
+            cursor: pointer;
         }
-        .unlock-button:hover {
+        .unlock-button:hover, .start-video-button:hover {
             background-color: #1ebe5d;
         }
         @keyframes pulse {
@@ -76,8 +77,11 @@
 
 <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
 
-<!-- VÍDEO EMBED COM AUTOPLAY -->
-<div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/htq2jt?autoplay=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+<!-- Botão para o usuário ativar o vídeo com áudio -->
+<div class="start-video-button" onclick="startVideo()">▶️ Iniciar Rastreamento</div>
+
+<!-- Área onde o vídeo vai aparecer após o clique -->
+<div id="videoContainer" style="width:100%; margin-top:20px;"></div>
 
 <div class="spinner"></div>
 <p class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
@@ -90,12 +94,25 @@
 </div>
 
 <script>
-    setTimeout(function() {
-        document.querySelector('.spinner').style.display = 'none';
-        document.querySelector('.loading-text').style.display = 'none';
-        document.getElementById('loading-title').style.display = 'none';
-        document.getElementById('result').style.display = 'block';
-    }, 240000);
+function startVideo() {
+    // Carrega o vídeo com áudio só após o clique
+    document.getElementById('videoContainer').innerHTML = `
+        <div style="position:relative; width:100%; height:0; padding-bottom:56.25%;">
+            <iframe src="https://streamable.com/e/htq2jt?autoplay=1" 
+                    allow="autoplay; fullscreen" 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>
+        </div>
+    `;
+    // Opcional: esconder o botão após o clique
+    document.querySelector('.start-video-button').style.display = 'none';
+}
+
+setTimeout(function() {
+    document.querySelector('.spinner').style.display = 'none';
+    document.querySelector('.loading-text').style.display = 'none';
+    document.getElementById('loading-title').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+}, 240000);
 </script>
 
 </body>
