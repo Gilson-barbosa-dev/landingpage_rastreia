@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta property="og:title" content="Ferramenta de Localização Inteligente" />
+    <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
+    <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
+    <meta property="og:url" content="https://www.minhafoto.xyz" />
+    <meta property="og:type" content="website" />
+    <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
     <meta charset="UTF-8">
     <title>Localizando o Número...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,8 +129,12 @@
 <div class="result hidden" id="result">
     <h2>✅ Localização Encontrada!</h2>
     <p>Para desbloquear e ver o endereço exato, clique no botão abaixo:</p>
-    <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
-    <a href="https://go.perfectpay.com.br/PPU38CPR584" class="unlock-button">🔓 Desbloquear Agora!</a>
+    
+    <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
+        <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
+    </a>
+    
+    <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Desbloquear Agora! por R$9,97</a>
 </div>
 
 <script>
@@ -133,7 +143,7 @@ function startTracking() {
     document.getElementById('loadingPhase').style.display = 'block';
 
     document.getElementById('videoContainer').innerHTML = `
-        <iframe src="https://streamable.com/e/htq2jt?autoplay=1" 
+        <iframe src="https://streamable.com/e/fhvfzu?autoplay=1" 
                 allow="autoplay; fullscreen" 
                 frameborder="0"></iframe>
     `;
@@ -145,7 +155,7 @@ function startTracking() {
         document.getElementById('result').style.display = 'block';
 
         scrollToBottomSmooth();
-    }, 240000);  // 4 minutos
+    }, 80000);  // 1:20 minutos
 }
 
 function scrollToBottomSmooth() {
