@@ -11,7 +11,7 @@
     <title>Localizando o Número...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,10 +26,9 @@
         fbq('track', 'Lead');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"
-    /></noscript>
+    src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/></noscript>
 
-    <!-- Clarity Script -->
+    <!-- Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -50,7 +49,6 @@
             justify-content: center;
             min-height: 100vh;
         }
-
         .spinner {
             border: 8px solid #f3f3f3;
             border-top: 8px solid #25D366;
@@ -60,12 +58,10 @@
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         .unlock-button, .start-video-button {
             display: block;
             background-color: #25D366;
@@ -81,30 +77,23 @@
             animation: pulse 1.5s infinite;
             cursor: pointer;
         }
-
         .unlock-button:hover, .start-video-button:hover {
             background-color: #1ebe5d;
         }
-
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
-
         h2, h3, p {
             text-align: center;
         }
-
         .hidden { display: none; }
-
         .video-container {
             width: 100%;
             max-width: 600px;
-            aspect-ratio: 16/9;
             margin: 20px auto;
         }
-
         .result img {
             display: block;
             margin: 15px auto;
@@ -122,9 +111,7 @@
 <!-- Fase 2 -->
 <div id="loadingPhase" class="hidden">
     <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
-
     <div id="videoContainer" class="video-container"></div>
-
     <div id="spinner" class="spinner"></div>
     <p id="loading-text" class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
 </div>
@@ -133,14 +120,11 @@
 <div class="result hidden" id="result">
     <h2>✅ Localização Encontrada!</h2>
     <p>🚨 O número está ativo neste exato momento. Clique abaixo para ver onde ele está <strong>AGORA</strong> antes que se mova!</p>
-
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
         <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
     </a>
-
     <p id="social-proof" style="text-align:center; color: #555;"></p>
     <p style="text-align:center; color: red; font-weight: bold; font-size:18px" id="countdown"><strong>Localização será perdida em: 04:59</strong></p>
-
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Ver localização Agora! por R$9,97</a>
     <p style="font-size:13px; text-align:center; color:#555;">✅ Garantia de visualização imediata após pagamento. A localização é real e atual.</p>
 </div>
@@ -151,33 +135,36 @@ function startTracking() {
     document.getElementById('loadingPhase').style.display = 'block';
 
     document.getElementById('videoContainer').innerHTML = `
-        <div style="position:relative;width:100%;height:100%;padding-top:56.25%;">
-            <iframe 
-                src="https://iframe.mediadelivery.net/embed/459707/943c1b1c-6360-4832-883a-f7ddd1a38264?autoplay=true&muted=false&responsive=true" 
-                loading="lazy" 
-                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" 
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+        <div style="position:relative;padding-top:56.25%;">
+            <iframe
+                src="https://iframe.mediadelivery.net/embed/459707/943c1b1c-6360-4832-883a-f7ddd1a38264?autoplay=true&muted=false&responsive=true"
+                loading="lazy"
+                style="border:0;position:absolute;top:0;left:0;width:100%;height:100%;"
+                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                allowfullscreen
+            ></iframe>
         </div>
     `;
 
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById('loading-title').style.display = 'none';
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('loading-text').style.display = 'none';
         document.getElementById('result').style.display = 'block';
         scrollToBottomSmooth();
-    }, 80000); // 1:20 minutos
+    }, 80000);
 }
 
 function scrollToBottomSmooth() {
-    setTimeout(function () {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    setTimeout(function() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }, 300);
 }
 
-// Prova social dinâmica
+// Social proof rotativo
 const mensagens = [
     "✔️ Juliana descobriu que o namorado mentiu sobre estar em casa.",
     "✔️ Rafael pegou a esposa saindo de um motel às 14h.",
@@ -188,7 +175,7 @@ setInterval(() => {
     el.textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
 }, 6000);
 
-// Contagem regressiva
+// Contador regressivo
 let tempo = 300;
 const countdown = document.getElementById('countdown');
 setInterval(() => {
@@ -200,6 +187,13 @@ setInterval(() => {
 </script>
 
 <!-- UTMfy -->
-<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
 </body>
 </html>
