@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,7 +11,7 @@
     <title>Localizando o Número...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,7 +29,7 @@
     src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"
     /></noscript>
 
-    <!-- Clarity Script -->
+    <!-- Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -110,26 +109,41 @@
 </head>
 <body>
 
+<!-- Fase 1 -->
 <div id="startPhase">
     <h3>Clique no botão abaixo para iniciar o rastreamento</h3>
     <div class="start-video-button" onclick="startTracking()">✅ Iniciar Rastreamento</div>
 </div>
 
+<!-- Fase 2 -->
 <div id="loadingPhase" class="hidden">
     <h2 id="loading-title">🔎 Estamos localizando o número informado...</h2>
-    <div id="videoContainer" class="video-container"></div>
+
+    <div id="videoContainer" class="video-container">
+        <iframe 
+            src="https://iframe.mediadelivery.net/play/459707/943c1b1c-6360-4832-883a-f7ddd1a38264" 
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" 
+            allowfullscreen="true" 
+            loading="lazy">
+        </iframe>
+    </div>
+
     <div id="spinner" class="spinner"></div>
     <p id="loading-text" class="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
 </div>
 
+<!-- Fase 3 -->
 <div class="result hidden" id="result">
     <h2>✅ Localização Encontrada!</h2>
     <p>🚨 O número está ativo neste exato momento. Clique abaixo para ver onde ele está <strong>AGORA</strong> antes que se mova!</p>
+    
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
         <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
     </a>
+
     <p id="social-proof" style="text-align:center; color: #555;"></p>
     <p style="text-align:center; color: red; font-weight: bold; font-size:18px" id="countdown"><strong>Localização será perdida em: 04:59</strong></p>
+
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Ver localização Agora! por R$9,97</a>
     <p style="font-size:13px; text-align:center; color:#555;">✅ Garantia de visualização imediata após pagamento. A localização é real e atual.</p>
 </div>
@@ -139,43 +153,15 @@ function startTracking() {
     document.getElementById('startPhase').style.display = 'none';
     document.getElementById('loadingPhase').style.display = 'block';
 
-    document.getElementById('videoContainer').innerHTML = `
-        <iframe
-          src="https://iframe.mediadelivery.net/play/459707/943c1b1c-6360-4832-883a-f7ddd1a38264?autoplay=true&muted=true&responsive=true"
-          loading="lazy"
-          allow="autoplay; encrypted-media; picture-in-picture;"
-          allowfullscreen
-          style="width:100%; height:100%; border:0;">
-        </iframe>
-    `;
-
     setTimeout(function() {
         document.getElementById('loading-title').style.display = 'none';
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('loading-text').style.display = 'none';
         document.getElementById('result').style.display = 'block';
+
         scrollToBottomSmooth();
-    }, 80000);
+    }, 80000); // 1:20 min
 }
-
-setInterval(() => {
-    const mensagens = [
-        "✔️ Juliana descobriu que o namorado mentiu sobre estar em casa.",
-        "✔️ Rafael pegou a esposa saindo de um motel às 14h.",
-        "✔️ Mais de 3.200 pessoas usaram essa ferramenta hoje."
-    ];
-    const el = document.getElementById("social-proof");
-    if (el) el.textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
-}, 6000);
-
-let tempo = 300;
-setInterval(() => {
-    const countdown = document.getElementById('countdown');
-    const min = String(Math.floor(tempo / 60)).padStart(2, '0');
-    const sec = String(tempo % 60).padStart(2, '0');
-    if (countdown) countdown.textContent = `Localização será perdida em: ${min}:${sec}`;
-    if (tempo > 0) tempo--;
-}, 1000);
 
 function scrollToBottomSmooth() {
     setTimeout(function() {
@@ -185,8 +171,31 @@ function scrollToBottomSmooth() {
         });
     }, 300);
 }
+
+// Mensagens de prova social
+const mensagens = [
+    "✔️ Juliana descobriu que o namorado mentiu sobre estar em casa.",
+    "✔️ Rafael pegou a esposa saindo de um motel às 14h.",
+    "✔️ Mais de 3.200 pessoas usaram essa ferramenta hoje."
+];
+const el = document.getElementById("social-proof");
+setInterval(() => {
+    el.textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
+}, 6000);
+
+// Contagem regressiva
+let tempo = 300;
+const countdown = document.getElementById('countdown');
+setInterval(() => {
+    const min = String(Math.floor(tempo / 60)).padStart(2, '0');
+    const sec = String(tempo % 60).padStart(2, '0');
+    countdown.textContent = `Localização será perdida em: ${min}:${sec}`;
+    if (tempo > 0) tempo--;
+}, 1000);
 </script>
 
+<!-- UTMfy -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
 </body>
 </html>
