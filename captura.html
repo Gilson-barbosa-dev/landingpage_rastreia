@@ -130,7 +130,18 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("rastreamentoFinalizado") === "true") {
+        document.getElementById('startPhase').style.display = 'none';
+        document.getElementById('loadingPhase').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        scrollToBottomSmooth();
+    }
+});
+
 function startTracking() {
+    localStorage.setItem("rastreamentoFinalizado", "true");
+
     document.getElementById('startPhase').style.display = 'none';
     document.getElementById('loadingPhase').style.display = 'block';
 
@@ -146,7 +157,7 @@ function startTracking() {
         </div>
     `;
 
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById('loading-title').style.display = 'none';
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('loading-text').style.display = 'none';
@@ -156,13 +167,14 @@ function startTracking() {
 }
 
 function scrollToBottomSmooth() {
-    setTimeout(function() {
+    setTimeout(function () {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
     }, 300);
 }
+
 
 // Social proof rotativo
 const mensagens = [
