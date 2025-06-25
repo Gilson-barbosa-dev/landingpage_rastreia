@@ -134,10 +134,11 @@
         <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
     </a>
 <!-- Trecho adicionado aqui -->
+<!--
     <p style="text-align:center; color: #999; font-size:14px;">
   Antes <s>R$29,90</s> — hoje por apenas <strong style="color:green;">R$9,97</strong>
 </p>
-
+-->
 <p id="social-proof" style="text-align:center; color: #555;"></p>
 <script>
     const mensagens = [
@@ -158,12 +159,12 @@
     setInterval(() => {
         const min = String(Math.floor(tempo / 60)).padStart(2, '0');
         const sec = String(tempo % 60).padStart(2, '0');
-        countdown.textContent = `Oferta expira em ${min}:${sec}`;
+        countdown.textContent = `Localização será perdida em: ${min}:${sec}`;
         if (tempo > 0) tempo--;
     }, 1000);
 </script>
 
-<a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Desbloquear Agora! por R$9,97</a>
+<a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Ver localização Agora! por R$9,97</a>
 <p style="font-size:13px; text-align:center; color:#555;">✅ Garantia de visualização imediata após pagamento. A localização é real e atual.</p>
 </div>
 
