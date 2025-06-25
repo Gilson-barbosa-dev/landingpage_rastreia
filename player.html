@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -50,9 +51,12 @@
 
   <script>
     function iniciarVideo() {
-      document.getElementById('player').innerHTML = `
-        <script src="https://iframe.mediadelivery.net/play/459707/943c1b1c-6360-4832-883a-f7ddd1a38264"></` + `script>
-      `;
+      const playerDiv = document.getElementById('player');
+      const script = document.createElement('script');
+      script.src = "https://iframe.mediadelivery.net/play/459707/943c1b1c-6360-4832-883a-f7ddd1a38264";
+      script.type = "text/javascript";
+      script.async = true;
+      playerDiv.appendChild(script);
     }
   </script>
 
