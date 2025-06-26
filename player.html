@@ -178,6 +178,9 @@
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
     }
 
+    // ✅ Marca que o usuário viu a oferta de R$19,90
+    localStorage.setItem('viuOfertaPrincipal', 'sim');
+
     const intervalo = setInterval(() => {
       progresso++;
       barra.style.width = progresso + "%";
@@ -193,7 +196,7 @@
       }
     }, 60);
 
-    // Backredirect com pop-up
+    // Pop-up de última chance
     let clicouCompra = false;
     let popupExibido = false;
 
