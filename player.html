@@ -42,20 +42,18 @@
   <style>
     html, body {
       height: 100%;
+      min-height: 100vh;
       margin: 0;
-      padding: 0;
+      padding: 0 20px 60px;
       font-family: Arial, sans-serif;
       background-color: #f7f7f7;
       color: #333;
       text-align: center;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     .logo {
-      width: 120px;
-      margin-top: 10px;
+      width: 160px;
+      margin: 10px auto 0;
     }
     .progress-bar-container {
       width: 80%;
@@ -63,7 +61,7 @@
       height: 10px;
       background: #eee;
       border-radius: 8px;
-      margin: 10px auto 20px;
+      margin: 20px auto;
     }
     .progress-bar {
       height: 100%;
@@ -107,7 +105,7 @@
     .rodape {
       font-size: 12px;
       color: #777;
-      margin: 20px 0;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -125,8 +123,9 @@
   <div id="fase-resultado" class="fase-escondida">
     <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
     <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
-    <p>📍 Localização pronta para visualização!</p>
-    <p style="color: #2e7d32; font-style: italic;">✅ Localização obtida com sucesso!</p>
+    <p style="color: #2e7d32; font-style: italic; font-weight: bold;">
+      📍 Localização encontrada com sucesso!
+    </p>
     <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
@@ -160,7 +159,7 @@
         faseLocalizando.style.display = "none";
         faseResultado.classList.remove("fase-escondida");
         faseResultado.classList.add("fase-visivel");
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
     }, 60);
   </script>
