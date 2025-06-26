@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Localizando o Número...</title>
   <meta property="og:title" content="Ferramenta de Localização Inteligente" />
   <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
   <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
   <meta property="og:url" content="https://www.minhafoto.xyz" />
   <meta property="og:type" content="website" />
   <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
+  <meta charset="UTF-8">
+  <title>Localizando o Número...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Meta Pixel -->
   <script>
@@ -25,13 +25,15 @@
     fbq('track', 'PageView');
     fbq('track', 'Lead');
   </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/></noscript>
 
   <!-- Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s355u53m2d");
   </script>
 
@@ -47,27 +49,6 @@
       justify-content: center;
       min-height: 100vh;
     }
-    h2, h3, p {
-      text-align: center;
-    }
-    .start-button, .unlock-button {
-      display: block;
-      background-color: #25D366;
-      color: white;
-      padding: 15px 20px;
-      font-size: 18px;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-      margin: 20px auto 0 auto;
-      animation: pulse 1.5s infinite;
-      cursor: pointer;
-      max-width: 300px;
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
-    }
-    .start-button:hover, .unlock-button:hover {
-      background-color: #1ebe5d;
-    }
     .spinner {
       border: 8px solid #f3f3f3;
       border-top: 8px solid #25D366;
@@ -81,6 +62,23 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    .start-button, .unlock-button {
+      display: block;
+      background-color: #25D366;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      margin: 20px auto 0 auto;
+      max-width: 350px;
+      box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+      animation: pulse 1.5s infinite;
+      cursor: pointer;
+    }
+    .start-button:hover, .unlock-button:hover {
+      background-color: #1ebe5d;
+    }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
       70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
@@ -91,40 +89,31 @@
       max-width: 600px;
       margin: 20px auto;
     }
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
+    h2, h3, p { text-align: center; }
   </style>
 </head>
 <body>
 
-<!-- FASE 1 -->
+<!-- Fase 1 -->
 <div id="fase1">
   <h3>✅ Clique no botão abaixo para iniciar o rastreamento</h3>
   <p style="font-size:14px;color:#666;">Ferramenta 100% anônima, segura e usada por mais de 95.000 pessoas.</p>
   <div class="start-button" onclick="iniciarRastreamento()">Iniciar Localização Agora</div>
 </div>
 
-<!-- FASE 2 -->
+<!-- Fase 2 -->
 <div id="fase2" class="hidden">
-  <h2>🔍 Localizando o número informado...</h2>
-  <div class="video-container">
-    <iframe
-      src="https://iframe.mediadelivery.net/embed/459707/943c1b1c-6360-4832-883a-f7ddd1a38264?autoplay=true&muted=true&responsive=true"
-      style="border:0;width:100%;height:315px;"
-      allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </div>
-  <div class="spinner"></div>
-  <p style="margin-top:10px;">Buscando sinais de GPS em tempo real...</p>
-  <p style="color:red; font-size:14px;">⚠️ A visualização será desbloqueada após confirmação de segurança no valor simbólico de R$9,97.</p>
+  <h2 id="loading-title">🔍 Estamos localizando o número informado...</h2>
+  <div id="videoContainer" class="video-container"></div>
+  <div id="spinner" class="spinner"></div>
+  <p id="loading-text">Por favor, aguarde... Buscando dados de GPS...</p>
 </div>
 
-<!-- FASE 3 -->
+<!-- Fase 3 -->
 <div id="resultado" class="hidden" style="text-align: center;">
   <h2>✅ Localização Encontrada!</h2>
-  <p>🎯 O número está ativo neste momento. Clique abaixo para ver <strong>agora</strong> antes que ele se mova!</p>
+  <p>🚨 O número está ativo neste momento. Clique abaixo para ver onde ele está <strong>AGORA</strong> antes que se mova!</p>
 
   <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
     <img src="static/images/mapa_blur.png"
@@ -133,48 +122,69 @@
   </a>
 
   <p id="social-proof" style="margin:10px 0; font-size:14px; color:#555;"></p>
+  <p style="text-align:center; color: red; font-weight: bold; font-size:18px" id="countdown"><strong>Localização será perdida em: 04:59</strong></p>
 
-  <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">
-    🔓 Ver localização agora por R$9,97
-  </a>
-
-  <p style="font-size:12px; color:#555; margin-top:8px;">✅ Visualização imediata após confirmação.</p>
+  <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Ver localização agora por R$9,97</a>
+  <p style="font-size:13px; text-align:center; color:#555;">✅ Garantia de visualização imediata após pagamento. A localização é real e atual.</p>
 </div>
 
 <!-- SCRIPT -->
 <script>
-  function iniciarRastreamento() {
-    document.getElementById('fase1').style.display = 'none';
-    document.getElementById('fase2').style.display = 'block';
+function iniciarRastreamento() {
+  document.getElementById('fase1').style.display = 'none';
+  document.getElementById('fase2').style.display = 'block';
 
-    setTimeout(() => {
-      document.getElementById('fase2').style.display = 'none';
-      document.getElementById('resultado').style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }, 15000);
-  }
+  // Insere o vídeo dinamicamente COM áudio
+  document.getElementById('videoContainer').innerHTML = `
+    <div style="position:relative;padding-top:56.25%;">
+      <iframe
+        src="https://iframe.mediadelivery.net/embed/459707/943c1b1c-6360-4832-883a-f7ddd1a38264?autoplay=true&muted=false&responsive=true"
+        loading="lazy"
+        style="border:0;position:absolute;top:0;left:0;width:100%;height:100%;"
+        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
 
-  // Provas sociais dinâmicas
-  const mensagens = [
-    "✔️ Juliana descobriu onde o marido realmente estava.",
-    "✔️ Rafael pegou a esposa no motel às 14h.",
-    "✔️ Ana percebeu que estava sendo enganada há semanas.",
-    "✔️ Mais de 3.200 acessos só hoje.",
-    "✔️ Carlos viu que a esposa estava em um bar enquanto dizia estar no trabalho.",
-    "✔️ Mariana confirmou a traição em menos de 5 minutos.",
-    "✔️ Ferramenta usada com sucesso em mais de 95.000 casos.",
-    "✔️ André localizou o número em tempo real e confirmou suas suspeitas."
-  ];
+  setTimeout(function () {
+    document.getElementById('loading-title').style.display = 'none';
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('loading-text').style.display = 'none';
+    document.getElementById('resultado').style.display = 'block';
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }, 15000);
+}
 
-  const el = document.getElementById("social-proof");
-  let index = 0;
-  function atualizarProvaSocial() {
-    el.textContent = mensagens[index];
-    index = (index + 1) % mensagens.length;
-  }
+// Provas sociais rotativas
+const mensagens = [
+  "✔️ Juliana descobriu onde o marido realmente estava.",
+  "✔️ Rafael pegou a esposa no motel às 14h.",
+  "✔️ Ana percebeu que estava sendo enganada há semanas.",
+  "✔️ Mais de 3.200 acessos só hoje.",
+  "✔️ Carlos viu que a esposa estava em um bar enquanto dizia estar no trabalho.",
+  "✔️ Mariana confirmou a traição em menos de 5 minutos.",
+  "✔️ Ferramenta usada com sucesso em mais de 95.000 casos.",
+  "✔️ André localizou o número em tempo real e confirmou suas suspeitas."
+];
+const el = document.getElementById("social-proof");
+let index = 0;
+function atualizarProvaSocial() {
+  el.textContent = mensagens[index];
+  index = (index + 1) % mensagens.length;
+}
+atualizarProvaSocial();
+setInterval(atualizarProvaSocial, 6000);
 
-  atualizarProvaSocial(); // inicial
-  setInterval(atualizarProvaSocial, 6000);
+// Contador regressivo
+let tempo = 300;
+const countdown = document.getElementById('countdown');
+setInterval(() => {
+  const min = String(Math.floor(tempo / 60)).padStart(2, '0');
+  const sec = String(tempo % 60).padStart(2, '0');
+  countdown.textContent = `Localização será perdida em: ${min}:${sec}`;
+  if (tempo > 0) tempo--;
+}, 1000);
 </script>
 
 <!-- UTMfy -->
