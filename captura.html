@@ -136,24 +136,14 @@
 
   <div id="fase-resultado" class="fase-escondida">
     <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
-    <a href="https://go.perfectpay.com.br/PPU38CPRCN8" class="link-compra">
+    <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="link-compra">
       <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
     </a>
     <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-    <a class="cta link-compra" href="https://go.perfectpay.com.br/PPU38CPRCN8">🔓 Desbloquear acesso seguro</a>
+    <a class="cta link-compra" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear acesso seguro</a>
     <p class="aviso-pagamento">Pagamento único para desbloquear o mapa completo</p>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
-    </div>
-  </div>
-
-  <!-- Pop-up de Última Chance -->
-  <div id="popup-ultima-chance" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
-    <div style="background:#fff; max-width:340px; width:90%; padding:25px; border-radius:12px; text-align:center; box-shadow:0 0 20px rgba(0,0,0,0.5);">
-      <h2 style="color:#d32f2f; font-size:20px; margin-bottom:10px;">⚠️ Última Chance!</h2>
-      <p style="color:#444; font-size:16px;">Desbloqueie a localização <strong>agora por apenas R$9,97</strong>.</p>
-      <a href="https://go.perfectpay.com.br/PPU38CPR8LL" style="display:inline-block; background-color:#25D366; color:white; padding:12px 24px; border-radius:8px; text-decoration:none; font-size:16px; margin-top:15px;">🔓 Desbloquear por R$9,97</a>
-      <p style="font-size:12px; color:#888; margin-top:10px;">Oferta exclusiva para quem ainda não finalizou a compra.</p>
     </div>
   </div>
 
@@ -178,9 +168,6 @@
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
     }
 
-    // Marca que o usuário viu a oferta principal (R$19,90)
-    localStorage.setItem('viuOfertaPrincipal', 'sim');
-
     const intervalo = setInterval(() => {
       progresso++;
       barra.style.width = progresso + "%";
@@ -194,36 +181,7 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 60);
-
-    // Lógica de saída
-    let clicouCompra = false;
-    let popupExibido = false;
-
-    document.querySelectorAll('.link-compra').forEach(link => {
-      link.addEventListener('click', function() {
-        clicouCompra = true;
-      });
-    });
-
-    // MOBILE + DESKTOP
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden" && !clicouCompra && !popupExibido) {
-        mostrarPopup();
-      }
-    });
-
-    // DESKTOP
-    document.addEventListener("mouseout", function(e) {
-      if (!clicouCompra && !popupExibido && e.clientY < 50) {
-        mostrarPopup();
-      }
-    });
-
-    function mostrarPopup() {
-      document.getElementById("popup-ultima-chance").style.display = "flex";
-      popupExibido = true;
-    }
+    }, 600);
   </script>
 </body>
 </html>
