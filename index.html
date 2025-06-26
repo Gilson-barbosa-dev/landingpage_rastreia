@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <title>Ferramenta de Localização Inteligente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Meta Pixel Code - Página 1 -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -24,10 +25,21 @@
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/>
+    </noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- CLARITY -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "s355u53m2d");
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -130,25 +142,16 @@
             margin-top: 10px;
         }
     </style>
-
-    <!-- CLARITY -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s355u53m2d");
-    </script>
 </head>
 <body>
 
 <div class="topbar">
-    Parabéns... Você ganhou uma INVESTIGAÇÃO GRATUITA!
+    Parabéns! Você ganhou acesso à ferramenta mais usada de rastreamento discreto.
 </div>
 
 <div class="container">
 
-    <h1>Descubra mensagens suspeitas, locais duvidosos e muito mais!</h1>
+    <h1>Acompanhe a localização de qualquer número — 100% anônimo</h1>
 
     <div class="image-top">
         <img src="static/images/logo.svg" alt="Imagem Espião">
@@ -175,7 +178,7 @@
 
     <div class="stats">
         <p>📈 <strong>95.234</strong> números rastreados com sucesso</p>
-        <p>🕑 Ferramenta atualizada: Sexta-Feira, 20 de Junho de 2025</p>
+        <p>🕑 Ferramenta atualizada: Sexta-Feira, 25 de Junho de 2025</p>
     </div>
 
     <div class="footer">
@@ -207,15 +210,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validação e redirecionamento
     botao.addEventListener('click', function() {
         const numero = telefoneInput.value.trim();
-        if (numero.length < 14) {  // Exemplo: formato mínimo esperado: (11) 90000-0000
+        if (numero.length < 14) {
             alert('Por favor, preencha um número de telefone válido.');
         } else {
+            localStorage.setItem('numeroRastreamento', numero);
             window.location.href = 'captura.html';
         }
     });
 });
 </script>
-    <!-- UTMfy -->
+
+<!-- UTMfy -->
 <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-xcod-sck
@@ -223,5 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
   async
   defer
 ></script>
+
 </body>
 </html>
