@@ -120,7 +120,7 @@
   </div>
 
   <div id="fase-resultado" class="fase-escondida">
-    <h2 style="margin-top: 10px;">Rastreando (11) 9.8362-**** • CLARO</h2>
+    <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
     <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
     <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
     <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
@@ -133,6 +133,7 @@
     let progresso = 0;
     const barra = document.getElementById("barra");
     const status = document.getElementById("status");
+    const numeroElement = document.getElementById("numero-rastreado");
     const frases = [
       "Analisando torres próximas...",
       "Buscando sinais de GPS...",
@@ -144,6 +145,12 @@
 
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
+
+    // Atualiza número salvo
+    const numero = localStorage.getItem('numeroRastreamento');
+    if (numero) {
+      numeroElement.textContent = `Rastreando ${numero} • CLARO`;
+    }
 
     const intervalo = setInterval(() => {
       progresso++;
