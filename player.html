@@ -133,7 +133,7 @@
 
   <div id="fase-resultado" class="fase-escondida">
     <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
-    <p class="pre-texto">📍 Localização detectada: São Paulo - SP (detalhes ocultos)</p>
+    <p class="pre-texto">📍 Localização detectada...</p>
     <p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
     <p class="aviso-pagamento">🔐 A localização foi detectada com sucesso. Para ver os detalhes, desbloqueie o acesso seguro.</p>
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
@@ -163,7 +163,6 @@
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
 
-    // Atualiza número salvo
     const numero = localStorage.getItem('numeroRastreamento');
     if (numero) {
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
@@ -183,6 +182,21 @@
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
     }, 60);
+
+    // Geolocalização automática via IP
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const cidade = data.city;
+        const estado = data.region_code;
+        const preTexto = document.querySelector('.pre-texto');
+        if (cidade && estado && preTexto) {
+          preTexto.textContent = `📍 Localização detectada: ${cidade} - ${estado} (detalhes ocultos)`;
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao obter localização:', error);
+      });
   </script>
 </body>
 </html>
