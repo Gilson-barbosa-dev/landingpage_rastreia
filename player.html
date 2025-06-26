@@ -11,32 +11,6 @@
   <title>Localizando o Número...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '347410298144359');
-    fbq('track', 'PageView');
-    fbq('track', 'Lead');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/></noscript>
-
-  <!-- Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s355u53m2d");
-  </script>
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -117,15 +91,27 @@
 <!-- Fase 3 -->
 <div id="resultado" class="hidden" style="text-align: center;">
   <h2>✅ Localização Encontrada!</h2>
+  <div id="live-viewers" style="font-size:13px; color:#555; text-align:center; margin-top:10px;">
+    👁️ <span id="viewer-count">5</span> pessoas visualizando esta localização agora
+  </div>
   <p>🚨 O número está ativo neste momento. Clique abaixo para ver onde ele está <strong>AGORA</strong> antes que se mova!</p>
+
   <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
     <img src="static/images/mapa_blur.png" alt="Mapa Localização"
          style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px; margin: 0 auto; display: block;">
   </a>
+
+  <p style="font-size:14px; color:#333;"><strong>📍 Última localização detectada:</strong> Av. Paulista, São Paulo - há 5 segundos</p>
   <p id="social-proof" style="margin:10px 0; font-size:14px; color:#555;"></p>
   <p style="text-align:center; color: red; font-weight: bold; font-size:18px" id="countdown"><strong>Localização será perdida em: 04:59</strong></p>
-  <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">🔓 Ver localização agora por R$9,97</a>
-  <p style="font-size:13px; text-align:center; color:#555;">✅ Garantia de visualização imediata após pagamento. A localização é real e atual.</p>
+
+  <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">📍 Quero ver agora por R$9,97</a>
+
+  <ul style="font-size:13px; text-align:left; max-width:350px; margin: 10px auto 0; color:#333; padding-left: 20px;">
+    <li>✅ Garantia de visualização imediata após o pagamento</li>
+    <li>💳 Pagamento único, sem mensalidade</li>
+    <li>📲 Suporte imediato por WhatsApp após a compra</li>
+  </ul>
 </div>
 
 <script>
@@ -170,10 +156,19 @@ function iniciarRastreamento() {
       document.getElementById('resultado').style.display = 'block';
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
-  }, 600);
+  }, 300); // 30 segundos total
 }
 
-// Verifica expiração localStorage
+// Visualização ao vivo simulada
+const viewerEl = document.getElementById("viewer-count");
+let viewerCount = 5;
+setInterval(() => {
+  const delta = Math.random() < 0.5 ? -1 : 1;
+  viewerCount = Math.max(2, viewerCount + delta);
+  viewerEl.textContent = viewerCount;
+}, 5000);
+
+// Verifica se rastreio já finalizado
 document.addEventListener("DOMContentLoaded", function () {
   const expiration = localStorage.getItem("rastreamentoFinalizado");
   if (expiration && Date.now() < parseInt(expiration)) {
@@ -183,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Provas sociais dinâmicas
+// Provas sociais rotativas
 const mensagens = [
   "✔️ Juliana descobriu onde o marido realmente estava.",
   "✔️ Rafael pegou a esposa no motel às 14h.",
@@ -203,7 +198,7 @@ function atualizarProvaSocial() {
 atualizarProvaSocial();
 setInterval(atualizarProvaSocial, 6000);
 
-// Contador
+// Contador regressivo
 let tempo = 300;
 const countdown = document.getElementById('countdown');
 setInterval(() => {
