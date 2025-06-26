@@ -138,6 +138,40 @@
       90% { opacity: 1; transform: translateY(0); }
       100% { opacity: 0; transform: translateY(20px); }
     }
+    .depoimentos {
+      max-width: 400px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .depoimento {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .depoimento img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .depoimento .texto {
+      font-size: 13px;
+      color: #333;
+    }
+    .depoimento .nome {
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .estrelas {
+      color: #fbc02d;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
   </style>
 </head>
 <body>
@@ -157,10 +191,35 @@
     <p class="pre-texto">📍 Localização detectada...</p>
     <p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
     <p class="aviso-pagamento">🔐 A localização foi detectada com sucesso. Para ver os detalhes, desbloqueie o acesso seguro.</p>
-    <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
-      <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
-    </a>
-    <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
+
+    <!-- Depoimentos -->
+    <div class="depoimentos">
+      <div class="depoimento">
+        <img src="https://i.pravatar.cc/40?img=12" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★★</div>
+          <div class="nome">Amanda – Belo Horizonte</div>
+          “Consegui confirmar uma suspeita que me incomodava há dias. Valeu cada centavo.”
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="https://i.pravatar.cc/40?img=25" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★★</div>
+          <div class="nome">Rogério – Curitiba</div>
+          “A localização apareceu em segundos. Discreto e eficaz, me surpreendeu!”
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="https://i.pravatar.cc/40?img=31" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★☆</div>
+          <div class="nome">Letícia – Salvador</div>
+          “Fiquei com medo no começo, mas funcionou mesmo! Recomendo.”
+        </div>
+      </div>
+    </div>
+
     <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear Agora por R$9,97 – Válido por tempo limitado!</a>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
