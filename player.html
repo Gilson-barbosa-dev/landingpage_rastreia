@@ -132,11 +132,7 @@
          style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px; margin: 0 auto; display: block;">
   </a>
 
-  <p style="margin:10px 0; font-size:14px; color:#555;">
-    ✔️ Juliana descobriu onde o marido realmente estava.  
-    ✔️ Rafael pegou a esposa no motel às 14h.  
-    ✔️ Mais de 3.200 acessos só hoje.
-  </p>
+  <p id="social-proof" style="margin:10px 0; font-size:14px; color:#555;"></p>
 
   <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">
     🔓 Ver localização agora por R$9,97
@@ -155,8 +151,30 @@
       document.getElementById('fase2').style.display = 'none';
       document.getElementById('resultado').style.display = 'block';
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }, 15000); // 15 segundos
+    }, 15000);
   }
+
+  // Provas sociais dinâmicas
+  const mensagens = [
+    "✔️ Juliana descobriu onde o marido realmente estava.",
+    "✔️ Rafael pegou a esposa no motel às 14h.",
+    "✔️ Ana percebeu que estava sendo enganada há semanas.",
+    "✔️ Mais de 3.200 acessos só hoje.",
+    "✔️ Carlos viu que a esposa estava em um bar enquanto dizia estar no trabalho.",
+    "✔️ Mariana confirmou a traição em menos de 5 minutos.",
+    "✔️ Ferramenta usada com sucesso em mais de 95.000 casos.",
+    "✔️ André localizou o número em tempo real e confirmou suas suspeitas."
+  ];
+
+  const el = document.getElementById("social-proof");
+  let index = 0;
+  function atualizarProvaSocial() {
+    el.textContent = mensagens[index];
+    index = (index + 1) % mensagens.length;
+  }
+
+  atualizarProvaSocial(); // inicial
+  setInterval(atualizarProvaSocial, 6000);
 </script>
 
 <!-- UTMfy -->
