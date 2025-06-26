@@ -117,6 +117,27 @@
       font-weight: bold;
       margin: 12px 0 4px 0;
     }
+    .popup-notificacao {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      font-size: 13px;
+      color: #333;
+      display: none;
+      z-index: 9999;
+      animation: fadeInOut 5s ease-in-out;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(20px); }
+    }
   </style>
 </head>
 <body>
@@ -145,6 +166,8 @@
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
     </div>
   </div>
+
+  <div class="popup-notificacao" id="popup-notificacao"></div>
 
   <script>
     let progresso = 0;
@@ -181,7 +204,7 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 60);
+    }, 600);
 
     // Geolocalização automática via IP
     fetch('https://ipapi.co/json/')
@@ -197,6 +220,29 @@
       .catch(error => {
         console.error('Erro ao obter localização:', error);
       });
+
+    // Notificações falsas dinâmicas
+    const mensagensNotificacao = [
+      "📍 Novo rastreio em Salvador - BA",
+      "📍 Localização capturada em Campinas - SP",
+      "📡 Rastreio ativo em Recife - PE",
+      "✅ Rastreio concluído em Belo Horizonte - MG",
+      "📍 Novo acesso de Fortaleza - CE",
+      "📡 Alvo rastreado em Curitiba - PR",
+      "📍 Localização detectada em Manaus - AM"
+    ];
+
+    function mostrarNotificacao() {
+      const popup = document.getElementById('popup-notificacao');
+      const msg = mensagensNotificacao[Math.floor(Math.random() * mensagensNotificacao.length)];
+      popup.textContent = msg;
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 5000);
+    }
+
+    setInterval(mostrarNotificacao, Math.floor(Math.random() * 6000) + 12000);
   </script>
 </body>
 </html>
