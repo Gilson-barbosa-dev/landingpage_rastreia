@@ -92,7 +92,8 @@
     .barra div {
       height: 100%;
       background: #25D366;
-      width: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
     }
 
     .cta {
@@ -121,12 +122,12 @@
 
   <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
 
-  <img src="static/images/mapa_blur.png" class="mapa" alt="Mapa com blur">
+  <img src="static/images/mapa_blur_ajustado.png" class="mapa" alt="Mapa com blur">
 
-  <p class="status">📍 Localização pronta para visualização!</p>
+  <p class="status" id="frase">📍 Localização pronta para visualização!</p>
   <p class="sucesso">✅ Localização obtida com sucesso!</p>
 
-  <div class="barra"><div></div></div>
+  <div class="barra"><div id="progresso"></div></div>
 
   <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
 
@@ -134,5 +135,26 @@
     🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
   </div>
 
+  <script>
+    const frases = [
+      "🔍 Procurando sinal de GPS...",
+      "📡 Trocando entre torres de celular...",
+      "🚗 Detectando movimentação em tempo real...",
+      "🛰️ Localização quase finalizada...",
+      "📍 Localização pronta para visualização!"
+    ];
+
+    let progresso = 0;
+    const barra = document.getElementById("progresso");
+    const fraseEl = document.getElementById("frase");
+
+    const intervalo = setInterval(() => {
+      progresso += 1;
+      barra.style.width = progresso + "%";
+      const idx = Math.floor(progresso / (100 / frases.length));
+      fraseEl.textContent = frases[Math.min(idx, frases.length - 1)];
+      if (progresso >= 100) clearInterval(intervalo);
+    }, 100);
+  </script>
 </body>
 </html>
