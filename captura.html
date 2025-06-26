@@ -178,7 +178,7 @@
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
     }
 
-    // ✅ Marca que o usuário viu a oferta de R$19,90
+    // Marca que o usuário viu a oferta principal (R$19,90)
     localStorage.setItem('viuOfertaPrincipal', 'sim');
 
     const intervalo = setInterval(() => {
@@ -196,7 +196,7 @@
       }
     }, 60);
 
-    // Pop-up de última chance
+    // Lógica de saída
     let clicouCompra = false;
     let popupExibido = false;
 
@@ -206,15 +206,14 @@
       });
     });
 
-    let scrollAnterior = window.scrollY;
-    window.addEventListener('scroll', function() {
-      let scrollAtual = window.scrollY;
-      if (!clicouCompra && !popupExibido && scrollAtual < scrollAnterior - 50) {
+    // MOBILE + DESKTOP
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden" && !clicouCompra && !popupExibido) {
         mostrarPopup();
       }
-      scrollAnterior = scrollAtual;
     });
 
+    // DESKTOP
     document.addEventListener("mouseout", function(e) {
       if (!clicouCompra && !popupExibido && e.clientY < 50) {
         mostrarPopup();
