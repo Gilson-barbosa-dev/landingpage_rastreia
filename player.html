@@ -11,148 +11,100 @@
   <meta property="og:type" content="website" />
   <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
 
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '347410298144359');
-    fbq('track', 'PageView');
-    fbq('track', 'Lead');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/>
-  </noscript>
-
-  <!-- Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s355u53m2d");
-  </script>
-
   <style>
     html, body {
-      height: 100%;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
       background-color: #f7f7f7;
       color: #333;
-      text-align: center;
+      height: 100vh;
       overflow: hidden;
-    }
-    .container {
-      height: 100dvh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
       box-sizing: border-box;
+      text-align: center;
     }
     .logo {
-      width: 100px;
+      width: 90px;
       margin-bottom: 10px;
     }
-    .progress-bar-container {
+    .barra {
       width: 80%;
-      max-width: 400px;
-      height: 10px;
-      background: #eee;
-      border-radius: 8px;
-      margin: 10px auto 20px;
+      max-width: 350px;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      margin: 10px auto;
     }
-    .progress-bar {
+    .barra div {
       height: 100%;
-      width: 0%;
       background: #25D366;
-      border-radius: 8px;
-      transition: width 0.3s ease;
-    }
-    .mapa-blur {
       width: 100%;
-      max-width: 360px;
+      border-radius: 10px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+    .mapa {
+      width: 100%;
+      max-width: 340px;
       border-radius: 12px;
       filter: blur(5px);
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      margin: 20px 0;
+      margin: 10px auto;
+    }
+    .status {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .sucesso {
+      font-size: 14px;
+      color: #2e7d32;
+      font-style: italic;
     }
     .cta {
-      display: inline-block;
       background-color: #25D366;
       color: white;
-      padding: 14px 28px;
+      padding: 12px 22px;
       border-radius: 10px;
       font-size: 16px;
       font-weight: bold;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
       text-decoration: none;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      margin-top: 15px;
+      display: inline-block;
       animation: pulse 1.8s infinite;
+    }
+    .rodape {
+      font-size: 11px;
+      color: #777;
+      margin-top: 10px;
     }
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
       70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
     }
-    .rodape {
-      font-size: 12px;
-      color: #777;
-      margin-top: 15px;
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
-    <div class="progress-bar-container">
-      <div class="progress-bar" id="barra"></div>
-    </div>
-    <h2 id="status">Localizando dispositivo...</h2>
-    <div id="resultado" style="display:none">
-      <h2 style="margin-top: 10px;">Rastreando (11) 9.8362-**** • CLARO</h2>
-      <img src="static/images/mapa_blur.png" alt="Mapa com blur" class="mapa-blur">
-      <p>📍 Localização pronta para visualização!</p>
-      <p style="color: #2e7d32; font-style: italic;">✅ Localização obtida com sucesso!</p>
-      <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
-      <div class="rodape">
-        🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
-      </div>
-    </div>
+    <div class="barra"><div></div></div>
+    <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
+    <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa">
+    <p class="status">📍 Localização pronta para visualização!</p>
+    <p class="sucesso">✅ Localização obtida com sucesso!</p>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
+    <div class="rodape">🔒 Dados criptografados | 🕑 Última atualização há poucos segundos</div>
   </div>
-  <script>
-    let progresso = 0;
-    const barra = document.getElementById("barra");
-    const status = document.getElementById("status");
-    const resultado = document.getElementById("resultado");
-    const frases = [
-      "Analisando torres próximas...",
-      "Buscando sinais de GPS...",
-      "Sincronizando com a operadora...",
-      "Validando número...",
-      "Rastreando dispositivo...",
-      "Localização quase finalizada..."
-    ];
-
-    const intervalo = setInterval(() => {
-      progresso++;
-      barra.style.width = progresso + "%";
-      const idx = Math.floor(progresso / (100 / frases.length));
-      status.textContent = frases[Math.min(idx, frases.length - 1)];
-      if (progresso >= 100) {
-        clearInterval(intervalo);
-        status.style.display = "none";
-        resultado.style.display = "block";
-      }
-    }, 60);
-  </script>
 </body>
 </html>
