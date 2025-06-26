@@ -48,17 +48,14 @@
       text-align: center;
       color: #333;
     }
-
     .logo {
       width: 140px;
       margin: 0 auto 20px;
     }
-
     h2 {
       font-size: 20px;
       margin: 10px 0;
     }
-
     .mapa {
       width: 100%;
       max-width: 380px;
@@ -67,18 +64,15 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin: 20px auto;
     }
-
     .status {
       font-size: 16px;
       margin: 15px 0 5px;
     }
-
     .sucesso {
       font-size: 14px;
       color: #2e7d32;
       font-style: italic;
     }
-
     .barra {
       width: 80%;
       max-width: 400px;
@@ -88,14 +82,12 @@
       margin: 20px auto;
       overflow: hidden;
     }
-
-    .barra div {
+    .progresso {
       height: 100%;
       background: #25D366;
       width: 0%;
-      transition: width 0.4s ease;
+      transition: width 0.3s ease;
     }
-
     .cta {
       display: inline-block;
       background-color: #25D366;
@@ -108,53 +100,61 @@
       box-shadow: 0 0 12px rgba(0,0,0,0.15);
       margin-top: 25px;
     }
-
     .rodape {
       font-size: 12px;
       color: #777;
       margin-top: 25px;
     }
+    .hidden { display: none; }
+    #frase-progresso {
+      font-size: 14px;
+      color: #333;
+      font-style: italic;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-
   <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
-
   <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
 
-  <img src="static/images/mapa_blur_ajustado.png" class="mapa" alt="Mapa com blur">
+  <p id="frase-progresso">🔍 Procurando sinal de GPS...</p>
+  <div class="barra"><div id="progressBar" class="progresso"></div></div>
 
-  <p class="status" id="frase">📍 Localização pronta para visualização!</p>
-  <p class="sucesso">✅ Localização obtida com sucesso!</p>
-
-  <div class="barra"><div id="progresso"></div></div>
-
-  <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
-
-  <div class="rodape">
-    🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
+  <div id="conteudo-final" class="hidden">
+    <img src="static/images/mapa_blur_ajustado.png" class="mapa" alt="Mapa com blur">
+    <p class="status">📍 Localização pronta para visualização!</p>
+    <p class="sucesso">✅ Localização obtida com sucesso!</p>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
+    <div class="rodape">
+      🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
+    </div>
   </div>
 
   <script>
     const frases = [
       "🔍 Procurando sinal de GPS...",
       "📡 Trocando entre torres de celular...",
-      "🚗 Detectando movimentação em tempo real...",
-      "🛰️ Localização quase finalizada...",
-      "📍 Localização pronta para visualização!"
+      "📶 Sinal instável, tentando nova triangulação...",
+      "🛰️ Satélite encontrado, confirmando coordenadas...",
+      "✅ Localização encontrada com sucesso!"
     ];
-
-    let progresso = 0;
-    const barra = document.getElementById("progresso");
-    const fraseEl = document.getElementById("frase");
+    let progress = 0;
+    const bar = document.getElementById('progressBar');
+    const fraseEl = document.getElementById('frase-progresso');
 
     const intervalo = setInterval(() => {
-      progresso += 1;
-      barra.style.width = progresso + "%";
-      const idx = Math.floor(progresso / (100 / frases.length));
-      fraseEl.textContent = frases[Math.min(idx, frases.length - 1)];
-      if (progresso >= 100) clearInterval(intervalo);
-    }, 100);
+      progress++;
+      bar.style.width = progress + "%";
+      const index = Math.floor(progress / (100 / frases.length));
+      fraseEl.textContent = frases[Math.min(index, frases.length - 1)];
+
+      if (progress >= 100) {
+        clearInterval(intervalo);
+        document.getElementById('frase-progresso').classList.add('hidden');
+        document.getElementById('conteudo-final').classList.remove('hidden');
+      }
+    }, 80);
   </script>
 </body>
 </html>
