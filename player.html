@@ -48,31 +48,41 @@
       text-align: center;
       color: #333;
     }
+
     .logo {
       width: 140px;
       margin: 0 auto 20px;
     }
+
     h2 {
       font-size: 20px;
       margin: 10px 0;
     }
+
     .mapa {
       width: 100%;
       max-width: 380px;
       border-radius: 12px;
-      filter: blur(5px);
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin: 20px auto;
+      display: none;
     }
+
+    .status, .sucesso, .barra, .cta {
+      display: none;
+    }
+
     .status {
       font-size: 16px;
       margin: 15px 0 5px;
     }
+
     .sucesso {
       font-size: 14px;
       color: #2e7d32;
       font-style: italic;
     }
+
     .barra {
       width: 80%;
       max-width: 400px;
@@ -82,12 +92,13 @@
       margin: 20px auto;
       overflow: hidden;
     }
-    .progresso {
+
+    .barra div {
       height: 100%;
       background: #25D366;
       width: 0%;
-      transition: width 0.3s ease;
     }
+
     .cta {
       display: inline-block;
       background-color: #25D366;
@@ -97,64 +108,90 @@
       text-decoration: none;
       font-size: 18px;
       font-weight: bold;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
       margin-top: 25px;
+      animation: pulse 1.6s infinite;
+      transition: transform 0.2s ease-in-out;
     }
+
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
     .rodape {
       font-size: 12px;
       color: #777;
       margin-top: 25px;
     }
-    .hidden { display: none; }
-    #frase-progresso {
+
+    #frase-dinamica {
       font-size: 14px;
-      color: #333;
-      font-style: italic;
       margin-top: 10px;
+      color: #666;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
+
   <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
+
   <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
 
-  <p id="frase-progresso">🔍 Procurando sinal de GPS...</p>
-  <div class="barra"><div id="progressBar" class="progresso"></div></div>
+  <p id="frase-dinamica">🔍 Procurando sinal de GPS...</p>
+  <div class="barra"><div id="progress"></div></div>
 
-  <div id="conteudo-final" class="hidden">
-    <img src="static/images/mapa_blur_ajustado.png" class="mapa" alt="Mapa com blur">
-    <p class="status">📍 Localização pronta para visualização!</p>
-    <p class="sucesso">✅ Localização obtida com sucesso!</p>
-    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
-    <div class="rodape">
-      🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
-    </div>
+  <img src="static/images/mapa_blur_ajustado.png" class="mapa" id="mapa" alt="Mapa com blur">
+  <p class="status" id="status">📍 Localização pronta para visualização!</p>
+  <p class="sucesso" id="sucesso">✅ Localização obtida com sucesso!</p>
+
+  <a class="cta" id="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
+
+  <div class="rodape">
+    🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
   </div>
 
   <script>
     const frases = [
       "🔍 Procurando sinal de GPS...",
       "📡 Trocando entre torres de celular...",
-      "📶 Sinal instável, tentando nova triangulação...",
-      "🛰️ Satélite encontrado, confirmando coordenadas...",
-      "✅ Localização encontrada com sucesso!"
+      "📶 Dispositivo em movimento...",
+      "🛰️ Satélite conectado...",
+      "✅ Sinal estabilizado, localizando..."
     ];
-    let progress = 0;
-    const bar = document.getElementById('progressBar');
-    const fraseEl = document.getElementById('frase-progresso');
+    let i = 0;
+    const fraseEl = document.getElementById("frase-dinamica");
+    const progress = document.getElementById("progress");
+    let pct = 0;
 
-    const intervalo = setInterval(() => {
-      progress++;
-      bar.style.width = progress + "%";
-      const index = Math.floor(progress / (100 / frases.length));
-      fraseEl.textContent = frases[Math.min(index, frases.length - 1)];
-
-      if (progress >= 100) {
-        clearInterval(intervalo);
-        document.getElementById('frase-progresso').classList.add('hidden');
-        document.getElementById('conteudo-final').classList.remove('hidden');
+    const interval = setInterval(() => {
+      pct++;
+      progress.style.width = pct + "%";
+      fraseEl.textContent = frases[Math.min(i, frases.length - 1)];
+      if (pct % 20 === 0) i++;
+      if (pct >= 100) {
+        clearInterval(interval);
+        document.getElementById("mapa").style.display = "block";
+        document.getElementById("status").style.display = "block";
+        document.getElementById("sucesso").style.display = "block";
+        document.getElementById("cta").style.display = "inline-block";
+        fraseEl.remove();
       }
-    }, 80);
+    }, 60);
   </script>
+
 </body>
 </html>
