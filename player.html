@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🔍 Rastreando Número...</title>
+  <meta charset="UTF-8">
+  <title>Localizando o Número...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Ferramenta de Localização Inteligente" />
   <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
   <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
   <meta property="og:url" content="https://www.minhafoto.xyz" />
   <meta property="og:type" content="website" />
+  <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
 
   <!-- Meta Pixel -->
   <script>
@@ -32,176 +33,106 @@
   <!-- Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s355u53m2d");
   </script>
 
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f1f1f1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
       color: #333;
     }
 
-    .header {
-      text-align: center;
-      padding: 20px;
+    .logo {
+      width: 140px;
+      margin: 0 auto 20px;
     }
 
-    .map-container {
-      background: url('https://www.minhafoto.xyz/static/images/mapa_blur.png') no-repeat center center;
-      background-size: cover;
-      width: 90%;
-      max-width: 400px;
-      height: 250px;
-      position: relative;
+    h2 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .mapa {
+      width: 100%;
+      max-width: 380px;
       border-radius: 12px;
-      margin-top: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      filter: blur(5px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin: 20px auto;
     }
 
-    .pin {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -100%);
-      width: 40px;
-      height: 40px;
-      background: red;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg) translate(-50%, -50%);
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
-      animation: pulse 1.5s infinite;
+    .status {
+      font-size: 16px;
+      margin: 15px 0 5px;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    .sucesso {
+      font-size: 14px;
+      color: #2e7d32;
+      font-style: italic;
     }
 
-    .info {
-      margin: 20px auto 10px;
-      font-size: 15px;
-      text-align: center;
-    }
-
-    .progress-container {
+    .barra {
       width: 80%;
       max-width: 400px;
       height: 10px;
-      background: #ddd;
-      border-radius: 5px;
+      background: #eee;
+      border-radius: 8px;
+      margin: 20px auto;
       overflow: hidden;
-      margin: 15px auto;
     }
 
-    .progress-bar {
+    .barra div {
       height: 100%;
-      width: 0%;
       background: #25D366;
-      transition: width 0.4s ease;
+      width: 100%;
     }
 
-    .phrase {
-      font-style: italic;
-      font-size: 14px;
-      color: #555;
-      margin-top: 5px;
-    }
-
-    .unlock-button {
-      display: block;
+    .cta {
+      display: inline-block;
       background-color: #25D366;
       color: white;
-      text-align: center;
-      padding: 15px 20px;
+      padding: 14px 28px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 18px;
-      border-radius: 8px;
-      margin: 25px auto;
-      max-width: 350px;
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
-      cursor: pointer;
-      animation: pulse 1.5s infinite;
+      font-weight: bold;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      margin-top: 25px;
     }
 
-    .unlock-button:hover {
-      background-color: #1ebe5d;
-    }
-
-    .footer {
+    .rodape {
       font-size: 12px;
-      text-align: center;
       color: #777;
-      margin-top: 10px;
+      margin-top: 25px;
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <img src="static/images/logo.svg" alt="Logo" style="width:120px; margin-bottom:10px;">
-  <h3>Rastreando (11) 9.8362-**** • CLARO</h3>
-</div>
+  <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
 
-<div class="map-container">
-  <div class="pin"></div>
-</div>
+  <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
 
-<div class="info" id="status">🛰️ Verificando sinal GPS...</div>
-<div class="phrase" id="frase-progresso">🔍 Estabelecendo conexão segura...</div>
+  <img src="static/images/mapa_blur_ajustado.png" class="mapa" alt="Mapa com blur">
 
-<div class="progress-container">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
+  <p class="status">📍 Localização pronta para visualização!</p>
+  <p class="sucesso">✅ Localização obtida com sucesso!</p>
 
-<a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button" id="botaoDesbloqueio" style="display:none;">🔓 Ver localização agora</a>
+  <div class="barra"><div></div></div>
 
-<div class="footer">
-  🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
-</div>
+  <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
 
-<script>
-  const frases = [
-    "🔍 Estabelecendo conexão segura...",
-    "📶 Sinal identificado. Aguardando confirmação...",
-    "🛰️ Coordenadas preliminares obtidas...",
-    "📡 Sinal GPS ativo e em movimentação...",
-    "📍 Quase finalizando rastreamento...",
-    "✅ Localização obtida com sucesso!"
-  ];
+  <div class="rodape">
+    🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
+  </div>
 
-  const progressBar = document.getElementById("progressBar");
-  const fraseEl = document.getElementById("frase-progresso");
-  const statusEl = document.getElementById("status");
-  const btn = document.getElementById("botaoDesbloqueio");
-
-  let progress = 0;
-
-  const interval = setInterval(() => {
-    progress += 1;
-    progressBar.style.width = progress + "%";
-
-    const index = Math.floor(progress / (100 / frases.length));
-    fraseEl.textContent = frases[Math.min(index, frases.length - 1)];
-
-    if (progress === 100) {
-      clearInterval(interval);
-      statusEl.textContent = "📍 Localização pronta para visualização!";
-      btn.style.display = "block";
-    }
-  }, 150);
-</script>
-
-<!-- UTMfy -->
-<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 </body>
 </html>
