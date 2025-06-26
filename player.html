@@ -41,19 +41,21 @@
 
   <style>
     html, body {
-      height: 100%;
-      min-height: 100vh;
+      height: 100vh;
       margin: 0;
-      padding: 0 20px 60px;
       font-family: Arial, sans-serif;
       background-color: #f7f7f7;
       color: #333;
       text-align: center;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 10px;
     }
     .logo {
-      width: 140px;
-      margin: 20px auto;
+      width: 100px;
+      margin: 10px auto 0;
     }
     .progress-bar-container {
       width: 80%;
@@ -74,28 +76,31 @@
       display: none;
     }
     .fase-visivel {
-      display: block;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .mapa-blur {
+      max-height: 30vh;
       width: 100%;
-      max-width: 380px;
+      max-width: 360px;
       border-radius: 12px;
       filter: blur(5px);
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      margin: 20px auto;
+      margin: 10px auto;
     }
     .cta {
       display: inline-block;
       background-color: #25D366;
       color: white;
-      padding: 16px 32px;
+      padding: 14px 24px;
       border-radius: 10px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       box-shadow: 0 0 15px rgba(0,0,0,0.15);
       animation: pulse 1.8s infinite;
       text-decoration: none;
-      margin-top: 25px;
+      margin-top: 15px;
     }
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
@@ -103,9 +108,9 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
     }
     .rodape {
-      font-size: 12px;
+      font-size: 11px;
       color: #777;
-      margin-top: 30px;
+      margin-top: 10px;
     }
   </style>
 </head>
