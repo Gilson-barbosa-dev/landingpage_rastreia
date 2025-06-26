@@ -195,7 +195,7 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 60);
+    }, 600);
     fetch('https://ipapi.co/json/')
       .then(response => response.json())
       .then(data => {
