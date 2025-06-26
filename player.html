@@ -8,6 +8,32 @@
   <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
   <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
   <meta property="og:url" content="https://www.minhafoto.xyz" />
+  <meta property="og:type" content="website" />
+  <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '347410298144359');
+    fbq('track', 'PageView');
+    fbq('track', 'Lead');
+  </script>
+
+  <!-- Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "s355u53m2d");
+  </script>
 
   <style>
     body {
@@ -37,6 +63,7 @@
       animation: pulse 1.5s infinite;
       cursor: pointer;
       max-width: 300px;
+      box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
     }
     .start-button:hover, .unlock-button:hover {
       background-color: #1ebe5d;
@@ -71,12 +98,14 @@
 </head>
 <body>
 
+<!-- FASE 1 -->
 <div id="fase1">
   <h3>✅ Clique no botão abaixo para iniciar o rastreamento</h3>
   <p style="font-size:14px;color:#666;">Ferramenta 100% anônima, segura e usada por mais de 95.000 pessoas.</p>
   <div class="start-button" onclick="iniciarRastreamento()">Iniciar Localização Agora</div>
 </div>
 
+<!-- FASE 2 -->
 <div id="fase2" class="hidden">
   <h2>🔍 Localizando o número informado...</h2>
   <div class="video-container">
@@ -92,31 +121,52 @@
   <p style="color:red; font-size:14px;">⚠️ A visualização será desbloqueada após confirmação de segurança no valor simbólico de R$9,97.</p>
 </div>
 
-<div id="resultado" class="hidden">
+<!-- FASE 3 -->
+<div id="resultado" class="hidden" style="text-align: center;">
   <h2>✅ Localização Encontrada!</h2>
-  <p>🚨 O número está ativo neste momento. Clique abaixo para ver <strong>agora</strong> antes que ele se mova!</p>
+  <p>🎯 O número está ativo neste momento. Clique abaixo para ver <strong>agora</strong> antes que ele se mova!</p>
+
   <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
-    <img src="static/images/mapa_blur.png" alt="Mapa Localização" style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px;">
+    <img src="static/images/mapa_blur.png"
+         alt="Mapa Localização"
+         style="width:100%; max-width:350px; filter:blur(2px); border-radius:10px; margin: 0 auto; display: block;">
   </a>
-  <p style="margin:10px 0; font-size:14px;">✔️ Juliana descobriu onde o marido realmente estava. ✔️ Rafael pegou a esposa no motel às 14h. ✔️ Mais de 3.200 acessos só hoje.</p>
-  <div class="unlock-button" onclick="window.location.href='https://go.perfectpay.com.br/PPU38CPR8LL'">
+
+  <p style="margin:10px 0; font-size:14px; color:#555;">
+    ✔️ Juliana descobriu onde o marido realmente estava.  
+    ✔️ Rafael pegou a esposa no motel às 14h.  
+    ✔️ Mais de 3.200 acessos só hoje.
+  </p>
+
+  <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="unlock-button">
     🔓 Ver localização agora por R$9,97
-  </div>
-  <p style="font-size:12px; color:#555;">✅ Visualização imediata após confirmação.</p>
+  </a>
+
+  <p style="font-size:12px; color:#555; margin-top:8px;">✅ Visualização imediata após confirmação.</p>
 </div>
 
+<!-- SCRIPT -->
 <script>
-function iniciarRastreamento() {
-  document.getElementById('fase1').style.display = 'none';
-  document.getElementById('fase2').style.display = 'block';
+  function iniciarRastreamento() {
+    document.getElementById('fase1').style.display = 'none';
+    document.getElementById('fase2').style.display = 'block';
 
-  setTimeout(() => {
-    document.getElementById('fase2').style.display = 'none';
-    document.getElementById('resultado').style.display = 'block';
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }, 15000); // 15 segundos
-}
+    setTimeout(() => {
+      document.getElementById('fase2').style.display = 'none';
+      document.getElementById('resultado').style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, 15000); // 15 segundos
+  }
 </script>
+
+<!-- UTMfy -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
 
 </body>
 </html>
