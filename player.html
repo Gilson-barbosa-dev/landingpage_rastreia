@@ -110,6 +110,7 @@
 <div id="fase2" class="hidden">
   <h2 id="loading-title">🔍 Estamos localizando o número informado...</h2>
   <div class="video-container" id="videoContainer"></div>
+  <p id="frase-progresso" style="font-size:14px; color:#333; font-style:italic; margin-bottom:8px;"></p>
   <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 </div>
 
@@ -146,11 +147,23 @@ function iniciarRastreamento() {
       ></iframe>
     </div>`;
 
+  const frases = [
+    "🔍 Analisando torres de sinal próximas...",
+    "📶 Detectamos movimentação em tempo real...",
+    "🚗 Dispositivo parece estar em deslocamento...",
+    "📡 Trocando entre antenas de celular...",
+    "🛰️ Sinal de GPS identificado, verificando precisão...",
+    "✅ Localização quase finalizada..."
+  ];
+  const fraseEl = document.getElementById("frase-progresso");
+
   let progress = 0;
   const bar = document.getElementById('progressBar');
   const interval = setInterval(() => {
     progress += 1;
     bar.style.width = progress + "%";
+    const fraseIndex = Math.floor(progress / (100 / frases.length));
+    fraseEl.textContent = frases[Math.min(fraseIndex, frases.length - 1)];
     if (progress >= 100) {
       clearInterval(interval);
       document.getElementById('fase2').style.display = 'none';
