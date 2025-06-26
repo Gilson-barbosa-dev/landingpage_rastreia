@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Localizando o Número...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta property="og:title" content="Ferramenta de Localização Inteligente" />
   <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
   <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
@@ -40,26 +40,43 @@
   </script>
 
   <style>
-    body {
+    html, body {
+      height: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0 20px 60px;
       font-family: Arial, sans-serif;
       background-color: #f7f7f7;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
       color: #333;
+      text-align: center;
+      overflow-x: hidden;
     }
-
     .logo {
       width: 140px;
-      margin: 0 auto 20px;
+      margin: 20px auto;
     }
-
-    h2 {
-      font-size: 20px;
-      margin: 10px 0;
+    .progress-bar-container {
+      width: 80%;
+      max-width: 400px;
+      height: 10px;
+      background: #eee;
+      border-radius: 8px;
+      margin: 20px auto;
     }
-
-    .mapa {
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #25D366;
+      border-radius: 8px;
+      transition: width 0.3s ease;
+    }
+    .fase-escondida {
+      display: none;
+    }
+    .fase-visivel {
+      display: block;
+    }
+    .mapa-blur {
       width: 100%;
       max-width: 380px;
       border-radius: 12px;
@@ -67,81 +84,47 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin: 20px auto;
     }
-
-    .status, .sucesso {
-      font-size: 16px;
-      margin: 15px 0 5px;
-    }
-
-    .sucesso {
-      font-size: 14px;
-      color: #2e7d32;
-      font-style: italic;
-    }
-
-    .barra {
-      width: 80%;
-      max-width: 400px;
-      height: 10px;
-      background: #eee;
-      border-radius: 8px;
-      margin: 20px auto;
-      overflow: hidden;
-    }
-
-    .barra div {
-      height: 100%;
-      background: #25D366;
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-
     .cta {
       display: inline-block;
       background-color: #25D366;
       color: white;
-      padding: 14px 28px;
+      padding: 16px 32px;
       border-radius: 10px;
-      text-decoration: none;
       font-size: 18px;
       font-weight: bold;
-      box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      animation: pulse 1.8s infinite;
+      text-decoration: none;
       margin-top: 25px;
-      animation: pulse 1.6s infinite;
-      transition: transform 0.2s ease-in-out;
     }
-
-    .cta:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);
-    }
-
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+      70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
     }
-
     .rodape {
       font-size: 12px;
       color: #777;
-      margin-top: 25px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-
   <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
 
-  <h2 id="frase">🔍 Procurando sinal de GPS...</h2>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="barra"></div>
+  </div>
 
-  <div class="barra"><div id="progresso"></div></div>
+  <div id="fase-localizando">
+    <h2 id="status">Localizando dispositivo...</h2>
+  </div>
 
-  <div id="conteudo-final" style="display: none;">
+  <div id="fase-resultado" class="fase-escondida">
     <h2>Rastreando (11) 9.8362-**** • CLARO</h2>
-    <img src="static/images/mapa_blur.png" class="mapa" alt="Mapa com blur">
-    <p class="status">📍 Localização pronta para visualização!</p>
-    <p class="sucesso">✅ Localização obtida com sucesso!</p>
+    <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
+    <p>📍 Localização pronta para visualização!</p>
+    <p style="color: #2e7d32; font-style: italic;">✅ Localização obtida com sucesso!</p>
     <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
@@ -149,36 +132,36 @@
   </div>
 
   <script>
+    let progresso = 0;
+    const barra = document.getElementById("barra");
+    const status = document.getElementById("status");
     const frases = [
-      "🔍 Procurando sinal de GPS...",
-      "📡 Trocando entre torres de celular...",
-      "🛰️ Satélite encontrado...",
-      "✅ Finalizando rastreamento..."
+      "Analisando torres próximas...",
+      "Buscando sinais de GPS...",
+      "Aguardando sincronização com operadora...",
+      "Validando número..."," +
+        "
+      "Rastreando dispositivo...",
+      "Localização quase finalizada..."
     ];
 
-    const fraseEl = document.getElementById("frase");
-    const barra = document.getElementById("progresso");
-    const final = document.getElementById("conteudo-final");
-
-    let progresso = 0;
-    let etapa = 0;
+    const faseResultado = document.getElementById("fase-resultado");
+    const faseLocalizando = document.getElementById("fase-localizando");
 
     const intervalo = setInterval(() => {
       progresso++;
       barra.style.width = progresso + "%";
-
-      if (progresso % 25 === 0 && etapa < frases.length) {
-        fraseEl.textContent = frases[etapa];
-        etapa++;
-      }
+      const idx = Math.floor(progresso / (100 / frases.length));
+      status.textContent = frases[Math.min(idx, frases.length - 1)];
 
       if (progresso >= 100) {
         clearInterval(intervalo);
-        fraseEl.style.display = "none";
-        final.style.display = "block";
+        faseLocalizando.style.display = "none";
+        faseResultado.classList.remove("fase-escondida");
+        faseResultado.classList.add("fase-visivel");
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
     }, 60);
   </script>
-
 </body>
 </html>
