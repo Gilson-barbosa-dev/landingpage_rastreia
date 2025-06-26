@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,35 +11,6 @@
   <meta property="og:url" content="https://www.minhafoto.xyz" />
   <meta property="og:type" content="website" />
   <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
-
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '347410298144359');
-    fbq('track', 'PageView');
-    fbq('track', 'Lead');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=347410298144359&ev=PageView&noscript=1"/>
-  </noscript>
-
-  <!-- Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s355u53m2d");
-  </script>
-
   <style>
     html, body {
       height: 100%;
@@ -69,12 +41,8 @@
       border-radius: 8px;
       transition: width 0.3s ease;
     }
-    .fase-escondida {
-      display: none;
-    }
-    .fase-visivel {
-      display: block;
-    }
+    .fase-escondida { display: none; }
+    .fase-visivel { display: block; }
     .mapa-blur {
       width: 100%;
       max-width: 350px;
@@ -101,22 +69,9 @@
       70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
     }
-    .rodape {
-      font-size: 12px;
-      color: #777;
-      margin-top: 10px;
-    }
-    .aviso-pagamento, .pre-texto {
-      font-size: 13px;
-      color: #888;
-      margin-top: 8px;
-    }
-    .prova-social {
-      color: #2e7d32;
-      font-size: 14px;
-      font-weight: bold;
-      margin: 12px 0 4px 0;
-    }
+    .rodape { font-size: 12px; color: #777; margin-top: 10px; }
+    .aviso-pagamento, .pre-texto { font-size: 13px; color: #888; margin-top: 8px; }
+    .prova-social { color: #2e7d32; font-size: 14px; font-weight: bold; margin: 12px 0 4px 0; }
     .popup-notificacao {
       position: fixed;
       bottom: 20px;
@@ -138,37 +93,77 @@
       90% { opacity: 1; transform: translateY(0); }
       100% { opacity: 0; transform: translateY(20px); }
     }
+    .depoimentos {
+      max-width: 400px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .depoimento {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .depoimento img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .depoimento .texto { font-size: 13px; color: #333; }
+    .depoimento .nome { font-weight: bold; font-size: 13px; }
+    .estrelas { color: #fbc02d; font-size: 14px; margin-bottom: 2px; }
   </style>
 </head>
 <body>
   <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
-
-  <div class="progress-bar-container">
-    <div class="progress-bar" id="barra"></div>
-  </div>
-
+  <div class="progress-bar-container"><div class="progress-bar" id="barra"></div></div>
   <div id="fase-localizando">
     <h3 id="status">Localizando dispositivo...</h3>
     <p class="aviso-pagamento">🔒 Por segurança, a exibição do endereço exato requer desbloqueio autorizado</p>
   </div>
-
   <div id="fase-resultado" class="fase-escondida">
     <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
     <p class="pre-texto">📍 Localização detectada...</p>
     <p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
     <p class="aviso-pagamento">🔐 A localização foi detectada com sucesso. Para ver os detalhes, desbloqueie o acesso seguro.</p>
     <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
-      <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
+      <img src="static/images/mapa_blur.png" alt="Mapa com localização" class="mapa-blur">
     </a>
-    <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear Agora por R$9,97 – Válido por tempo limitado!</a>
-    <div class="rodape">
-      🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
+    <div class="depoimentos">
+      <div class="depoimento">
+        <img src="static/images/mulher1.jpg" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★★</div>
+          <div class="nome">Amanda – Belo Horizonte</div>
+          “Consegui confirmar uma suspeita que me incomodava há dias. Valeu cada centavo.”
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="static/images/homem.jpg" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★★</div>
+          <div class="nome">Rogério – Curitiba</div>
+          “A localização apareceu em segundos. Discreto e eficaz, me surpreendeu!”
+        </div>
+      </div>
+      <div class="depoimento">
+        <img src="static/images/mulher2.jpg" alt="Usuário">
+        <div class="texto">
+          <div class="estrelas">★★★★☆</div>
+          <div class="nome">Letícia – Salvador</div>
+          “Fiquei com medo no começo, mas funcionou mesmo! Recomendo.”
+        </div>
+      </div>
     </div>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear Agora por R$9,97 – Válido por tempo limitado!</a>
+    <div class="rodape">🔒 Dados criptografados | 🕑 Última atualização há poucos segundos</div>
   </div>
-
   <div class="popup-notificacao" id="popup-notificacao"></div>
-
   <script>
     let progresso = 0;
     const barra = document.getElementById("barra");
@@ -182,21 +177,17 @@
       "Rastreando dispositivo...",
       "Localização quase finalizada..."
     ];
-
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
-
     const numero = localStorage.getItem('numeroRastreamento');
     if (numero) {
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
     }
-
     const intervalo = setInterval(() => {
       progresso++;
       barra.style.width = progresso + "%";
       const idx = Math.floor(progresso / (100 / frases.length));
       status.textContent = frases[Math.min(idx, frases.length - 1)];
-
       if (progresso >= 100) {
         clearInterval(intervalo);
         faseLocalizando.style.display = "none";
@@ -204,9 +195,7 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 600);
-
-    // Geolocalização automática via IP
+    }, 60);
     fetch('https://ipapi.co/json/')
       .then(response => response.json())
       .then(data => {
@@ -220,8 +209,6 @@
       .catch(error => {
         console.error('Erro ao obter localização:', error);
       });
-
-    // Notificações falsas dinâmicas
     const mensagensNotificacao = [
       "📍 Novo rastreio em Salvador - BA",
       "📍 Localização capturada em Campinas - SP",
@@ -231,17 +218,13 @@
       "📡 Alvo rastreado em Curitiba - PR",
       "📍 Localização detectada em Manaus - AM"
     ];
-
     function mostrarNotificacao() {
       const popup = document.getElementById('popup-notificacao');
       const msg = mensagensNotificacao[Math.floor(Math.random() * mensagensNotificacao.length)];
       popup.textContent = msg;
       popup.style.display = 'block';
-      setTimeout(() => {
-        popup.style.display = 'none';
-      }, 5000);
+      setTimeout(() => { popup.style.display = 'none'; }, 5000);
     }
-
     setInterval(mostrarNotificacao, Math.floor(Math.random() * 6000) + 12000);
   </script>
 </body>
