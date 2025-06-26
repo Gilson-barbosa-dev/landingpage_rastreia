@@ -94,7 +94,7 @@
       box-shadow: 0 0 12px rgba(0,0,0,0.15);
       animation: pulse 1.8s infinite;
       text-decoration: none;
-      margin-top: 18px;
+      margin-top: 10px;
     }
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
@@ -104,7 +104,12 @@
     .rodape {
       font-size: 12px;
       color: #777;
-      margin-top: 15px;
+      margin-top: 10px;
+    }
+    .aviso-pagamento {
+      font-size: 13px;
+      color: #888;
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -117,24 +122,20 @@
 
   <div id="fase-localizando">
     <h3 id="status">Localizando dispositivo...</h3>
+    <p class="aviso-pagamento">🔒 Por segurança, a exibição do endereço exato requer desbloqueio autorizado</p>
   </div>
 
   <div id="fase-resultado" class="fase-escondida">
-  <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
-  
-  <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
-    <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
-  </a>
-  
-  <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-  
-  <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Ver localização agora</a>
-  
-  <div class="rodape">
-    🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
-  </div>
-</div>
-
+    <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
+    <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
+      <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
+    </a>
+    <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear acesso seguro</a>
+    <p class="aviso-pagamento">Pagamento único para desbloquear o mapa completo</p>
+    <div class="rodape">
+      🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
+    </div>
   </div>
 
   <script>
