@@ -39,15 +39,6 @@
     })(window, document, "clarity", "script", "s355u53m2d");
   </script>
 
-  <!-- UTMfy -->
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    async
-    defer
-  ></script>
-
   <style>
     html, body {
       height: 100%;
@@ -115,10 +106,16 @@
       color: #777;
       margin-top: 10px;
     }
-    .aviso-pagamento {
+    .aviso-pagamento, .pre-texto {
       font-size: 13px;
       color: #888;
       margin-top: 8px;
+    }
+    .prova-social {
+      color: #2e7d32;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 12px 0 4px 0;
     }
   </style>
 </head>
@@ -136,12 +133,14 @@
 
   <div id="fase-resultado" class="fase-escondida">
     <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
-    <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="link-compra">
+    <p class="pre-texto">📍 Localização detectada...</p>
+    <p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
+    <p class="aviso-pagamento">🔐 A localização foi detectada com sucesso. Para ver os detalhes, desbloqueie o acesso seguro.</p>
+    <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
       <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur">
     </a>
     <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-    <a class="cta link-compra" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear acesso seguro</a>
-    <p class="aviso-pagamento">Pagamento único para desbloquear o mapa completo</p>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear Agora por R$9,97 – Válido por tempo limitado!</a>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
     </div>
@@ -160,6 +159,7 @@
       "Rastreando dispositivo...",
       "Localização quase finalizada..."
     ];
+
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
 
@@ -181,7 +181,22 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 600);
+    }, 60);
+
+    // Geolocalização automática via IP
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const cidade = data.city;
+        const estado = data.region_code;
+        const preTexto = document.querySelector('.pre-texto');
+        if (cidade && estado && preTexto) {
+          preTexto.textContent = `📍 Localização detectada: ${cidade} - ${estado} (detalhes ocultos)`;
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao obter localização:', error);
+      });
   </script>
 </body>
 </html>
