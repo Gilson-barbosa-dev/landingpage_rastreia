@@ -1,19 +1,18 @@
-
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Localizando o Número...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta property="og:title" content="Ferramenta de Localização Inteligente" />
-  <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
-  <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
-  <meta property="og:url" content="https://www.minhafoto.xyz" />
-  <meta property="og:type" content="website" />
-  <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
-
-      <!-- Meta Pixel Code - Pixel Atualizado -->
-    <script>
+<meta charset="utf-8"/>
+<title>Localizando o Número...</title>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="Ferramenta de Localização Inteligente" property="og:title">
+<meta content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." property="og:description">
+<meta content="https://www.minhafoto.xyz/static/images/preview.jpg" property="og:image"/>
+<meta content="https://www.minhafoto.xyz" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description"/>
+<!-- Meta Pixel -->
+<script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -22,27 +21,22 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1123618309577539'); 
+    fbq('init', '347410298144359');
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1123618309577539&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
-    
-
-    <!-- CLARITY -->
-    <script type="text/javascript">
+    fbq('track', 'Lead');
+  </script>
+<noscript>
+<img height="1" src="https://www.facebook.com/tr?id=347410298144359&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/>
+</noscript>
+<!-- Clarity -->
+<script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s355u53m2d");
-    </script>
-  
-  <style>
+  </script>
+<style>
     html, body {
       height: 100%;
       margin: 0;
@@ -72,8 +66,12 @@
       border-radius: 8px;
       transition: width 0.3s ease;
     }
-    .fase-escondida { display: none; }
-    .fase-visivel { display: block; }
+    .fase-escondida {
+      display: none;
+    }
+    .fase-visivel {
+      display: block;
+    }
     .mapa-blur {
       width: 100%;
       max-width: 350px;
@@ -100,102 +98,40 @@
       70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
     }
-    .rodape { font-size: 12px; color: #777; margin-top: 10px; }
-    .aviso-pagamento, .pre-texto { font-size: 13px; color: #888; margin-top: 8px; }
-    .prova-social { color: #2e7d32; font-size: 14px; font-weight: bold; margin: 12px 0 4px 0; }
-    .popup-notificacao {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: white;
-      border: 1px solid #ccc;
-      padding: 10px 16px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    .rodape {
+      font-size: 12px;
+      color: #777;
+      margin-top: 10px;
+    }
+    .aviso-pagamento {
       font-size: 13px;
-      color: #333;
-      display: none;
-      z-index: 9999;
-      animation: fadeInOut 5s ease-in-out;
+      color: #888;
+      margin-top: 8px;
     }
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateY(20px); }
-      10% { opacity: 1; transform: translateY(0); }
-      90% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(20px); }
-    }
-    .depoimentos {
-      max-width: 400px;
-      margin: 20px auto;
-      text-align: left;
-    }
-    .depoimento {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    .depoimento img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-    .depoimento .texto { font-size: 13px; color: #333; }
-    .depoimento .nome { font-weight: bold; font-size: 13px; }
-    .estrelas { color: #fbc02d; font-size: 14px; margin-bottom: 2px; }
   </style>
-</head>
+</meta></meta></head>
 <body>
-  <img src="static/images/logo.svg" class="logo" alt="Logo Rastreio Parceiro">
-  <div class="progress-bar-container"><div class="progress-bar" id="barra"></div></div>
-  <div id="fase-localizando">
-    <h3 id="status">Localizando dispositivo...</h3>
-    <p class="aviso-pagamento">🔒 Por segurança, a exibição do endereço exato requer desbloqueio autorizado</p>
-  </div>
-  <div id="fase-resultado" class="fase-escondida">
-    <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
-    <p class="pre-texto">📍 Localização detectada...</p>
-    <p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
-    <p class="aviso-pagamento">🔐 A localização foi detectada com sucesso. Para ver os detalhes, desbloqueie o acesso seguro.</p>
-    <!-- <a href="https://go.perfectpay.com.br/PPU38CPR8LL"> -->
-      <img src="static/images/mapa_blur.png" alt="Mapa com localização" class="mapa-blur">
-    <!-- </a> -->
-    <div class="depoimentos">
-      <div class="depoimento">
-        <img src="static/images/mulher1.jpg" alt="Usuário">
-        <div class="texto">
-          <div class="estrelas">★★★★★</div>
-          <div class="nome">Amanda – Belo Horizonte</div>
-          “Consegui confirmar uma suspeita que me incomodava há dias. Valeu cada centavo.”
-        </div>
-      </div>
-      <div class="depoimento">
-        <img src="static/images/homem.jpg" alt="Usuário">
-        <div class="texto">
-          <div class="estrelas">★★★★★</div>
-          <div class="nome">Rogério – Curitiba</div>
-          “A localização apareceu em segundos. Discreto e eficaz, me surpreendeu!”
-        </div>
-      </div>
-      <div class="depoimento">
-        <img src="static/images/mulher2.jpg" alt="Usuário">
-        <div class="texto">
-          <div class="estrelas">★★★★☆</div>
-          <div class="nome">Letícia – Salvador</div>
-          “Fiquei com medo no começo, mas funcionou mesmo! Recomendo.”
-        </div>
-      </div>
+<img alt="Logo Rastreio Parceiro" class="logo" src="static/images/logo.svg"/>
+<div class="progress-bar-container">
+<div class="progress-bar" id="barra"></div>
+</div>
+<div id="fase-localizando">
+<h3 id="status">Localizando dispositivo...</h3>
+<p class="aviso-pagamento">🔒 Por segurança, a exibição do endereço exato requer desbloqueio autorizado</p>
+</div>
+<div class="fase-escondida" id="fase-resultado">
+<h2 id="numero-rastreado" style="margin-top: 10px;">Rastreando número...</h2><p class="prova-social">📈 Mais de 95 mil rastreios realizados com sucesso</p>
+<a href="https://go.perfectpay.com.br/PPU38CPR8LL">
+<img alt="Mapa" class="mapa-blur" id="mapaBlur" src="static/images/mapa_blur.png"/>
+</a>
+<p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
+<a class="cta" href="https://go.perfectpay.com.br/PPU38CPRCN8">🔓 Desbloquear Agora por R$ 19,90 – Válido por tempo limitado!</a>
+<p class="aviso-pagamento">Pagamento único para desbloquear o mapa completo</p>
+<div class="rodape">
+      🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
     </div>
-    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear Agora por R$9,97 – Válido por tempo limitado!</a>
-    <div class="rodape">🔒 Dados criptografados | 🕑 Última atualização há poucos segundos</div>
-  </div>
-  <div class="popup-notificacao" id="popup-notificacao"></div>
-  <script>
+</div>
+<script>
     let progresso = 0;
     const barra = document.getElementById("barra");
     const status = document.getElementById("status");
@@ -208,17 +144,22 @@
       "Rastreando dispositivo...",
       "Localização quase finalizada..."
     ];
+
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
+
+    // Atualiza número salvo
     const numero = localStorage.getItem('numeroRastreamento');
     if (numero) {
       numeroElement.textContent = `Localizado ${numero} • CLARO`;
     }
+
     const intervalo = setInterval(() => {
       progresso++;
       barra.style.width = progresso + "%";
       const idx = Math.floor(progresso / (100 / frases.length));
       status.textContent = frases[Math.min(idx, frases.length - 1)];
+
       if (progresso >= 100) {
         clearInterval(intervalo);
         faseLocalizando.style.display = "none";
@@ -226,45 +167,41 @@
         faseResultado.classList.add("fase-visivel");
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
-    }, 600);
-    fetch('https://ipapi.co/json/')
-      .then(response => response.json())
-      .then(data => {
-        const cidade = data.city;
-        const estado = data.region_code;
-        const preTexto = document.querySelector('.pre-texto');
-        if (cidade && estado && preTexto) {
-          preTexto.textContent = `📍 Localização detectada: ${cidade} - ${estado} (detalhes ocultos)`;
-        }
-      })
-      .catch(error => {
-        console.error('Erro ao obter localização:', error);
-      });
-    const mensagensNotificacao = [
-      "📍 Novo rastreio em Salvador - BA",
-      "📍 Localização capturada em Campinas - SP",
-      "📡 Rastreio ativo em Recife - PE",
-      "✅ Rastreio concluído em Belo Horizonte - MG",
-      "📍 Novo acesso de Fortaleza - CE",
-      "📡 Alvo rastreado em Curitiba - PR",
-      "📍 Localização detectada em Manaus - AM"
-    ];
-    function mostrarNotificacao() {
-      const popup = document.getElementById('popup-notificacao');
-      const msg = mensagensNotificacao[Math.floor(Math.random() * mensagensNotificacao.length)];
-      popup.textContent = msg;
-      popup.style.display = 'block';
-      setTimeout(() => { popup.style.display = 'none'; }, 5000);
-    }
-    setInterval(mostrarNotificacao, Math.floor(Math.random() * 6000) + 12000);
+    }, 60);
   </script>
-  <!-- UTMfy -->
-<script
-  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-  data-utmify-prevent-xcod-sck
-  data-utmify-prevent-subids
-  async
-  defer
-></script>
+
+<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
+<div id="popupContent" style="background:white; padding:20px; border-radius:10px; width:90%; max-width:320px; text-align:center;">
+<h3>🔒 Acesso restrito</h3>
+<p id="mensagemPopup" style="font-size:15px;"></p>
+<a class="cta" href="https://go.perfectpay.com.br/PPU38CPRCN8" id="btnCheckout">Desbloquear agora</a>
+<button onclick="document.getElementById('popup').style.display='none'" style="display:block;margin-top:10px;background:none;border:none;color:#888;text-decoration:underline;cursor:pointer;">Cancelar</button>
+</div>
+</div>
+
+<script>
+  const mensagens = [
+    {
+      texto: `📍 <strong>Localização encontrada:</strong> só essa semana ela já esteve nesse local <strong>2&nbsp;vezes</strong>.<br><br>Desbloqueie por apenas <strong>R$ 19,90</strong> para ver agora.`,
+      id: "copy1"
+    },
+    {
+      texto: `📍 <strong>Rastreamento finalizado:</strong> esse mesmo endereço apareceu <strong>mais de uma vez</strong> nos últimos dias.<br><br>Desbloqueie por <strong>R$ 19,90</strong> e veja agora.`,
+      id: "copy2"
+    },
+    {
+      texto: `🕵️‍♀️ <strong>Tem algo estranho nesse endereço...</strong> não foi a primeira vez que ela esteve lá.<br><br>Quer saber onde é? Apenas <strong>R$ 19,90</strong>.`,
+      id: "copy3"
+    }
+  ];
+
+  document.getElementById("mapaBlur")?.addEventListener("click", function(e) {
+    e.preventDefault();
+    const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+    document.getElementById("mensagemPopup").innerHTML = msg.texto;
+    document.getElementById("popupContent").setAttribute("data-copy-version", msg.id);
+    document.getElementById("popup").style.display = "flex";
+  });
+</script>
 </body>
 </html>
