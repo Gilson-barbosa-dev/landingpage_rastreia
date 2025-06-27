@@ -60,6 +60,7 @@
 
   <div id="fase-resultado" style="display:none;">
     <h2 id="numero-rastreado">Rastreando número...</h2>
+    <p id="localizacao-usuario" style="font-size: 14px; color: #555; margin-top: -8px;">📍 Localização: detectando...</p>
     <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur" id="mapaBlur"/>
     <div class="depoimentos">
       <div class="depoimento"><img src="static/images/mulher1.jpg"/><div class="texto"><div class="estrelas">★★★★★</div><div class="nome">Amanda – BH</div>“Confirmei uma suspeita que me incomodava. Valeu cada centavo.”</div></div>
@@ -95,5 +96,17 @@
       }
     }, 400);
   </script>
+  
+  <!-- Pegar a localização -->
+  <script>
+  fetch('https://ipwho.is/')
+  .then(res => res.json())
+  .then(data => {
+    const cidade = data.city;
+    const estado = data.region_code;
+    if (cidade && estado) {
+      document.getElementById("localizacao-usuario").textContent = `📍 Localização detectada: ${cidade} - ${estado}`;
+    });
+</script>
 </body>
 </html>
