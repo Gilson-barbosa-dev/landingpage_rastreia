@@ -146,6 +146,7 @@
 </div>
 <div class="fase-escondida" id="fase-resultado">
 <h2 id="numero-rastreado" style="margin-top: 10px;">Rastreando número...</h2>
+<p id="localizacao-usuario" style="font-size: 14px; color: #555; margin-top: -8px;"></p>
 <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
 <img alt="Mapa" class="mapa-blur" id="mapaBlur" src="static/images/mapa_blur.png"/>
 </a>
@@ -261,5 +262,18 @@ document.getElementById("mapaBlur")?.addEventListener("click", function(e) {
   document.getElementById("popup").style.display = "flex";
 });
 </script>
+
+<!-- Localização do usuário -->
+<script>
+fetch('https://ipwho.is/')
+  .then(res => res.json())
+  .then(data => {
+    const cidade = data.city;
+    const estado = data.region_code;
+    if (cidade && estado) {
+      document.getElementById("localizacao-usuario").textContent = `📍 Localização encontrada em: ${cidade} - ${estado}`;
+    }});
+</script>
+
 </body>
 </html>
