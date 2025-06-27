@@ -9,8 +9,8 @@
 <meta content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." property="og:description"/>
 <meta content="https://www.minhafoto.xyz/static/images/preview.jpg" property="og:image"/>
 <meta content="https://www.minhafoto.xyz" property="og:url"/>
-<meta content="website" property="og:type">
-<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description">
+<meta content="website" property="og:type"/>
+<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description"/>
 <!-- Meta Pixel -->
 <script>
     !function(f,b,e,v,n,t,s)
@@ -133,8 +133,15 @@
 .depoimento .texto { font-size: 13px; color: #333; }
 .depoimento .nome { font-weight: bold; font-size: 13px; }
 .estrelas { color: #fbc02d; font-size: 14px; margin-bottom: 2px; }
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
 </style>
-</meta></meta></head>
+</head>
 <body>
 <img alt="Logo Rastreio Parceiro" class="logo" src="static/images/logo.svg"/>
 <div class="progress-bar-container">
@@ -227,11 +234,10 @@
 <h3>🔒 Acesso restrito</h3>
 <p id="mensagemPopup" style="font-size:15px;"></p>
 <a class="cta" href="https://go.perfectpay.com.br/PPU38CPRCN8" id="btnCheckout">Desbloquear agora</a>
-<button onclick="document.getElementById('popup').style.display='none'" 
-  style="display:block; margin:10px auto 0 auto; background:none; border:none; color:#888; 
-         text-decoration:underline; cursor:pointer; text-align:center;">
-  Cancelar
-</button>
+<button onclick="document.getElementById('popup').style.display='none'" style="display:block;
+      margin-top:10px;background:none;border:none;color:#888;text-decoration:underline;cursor:pointer;">
+      Cancelar
+    </button>
 </div>
 </div>
 <script>
@@ -261,5 +267,26 @@ document.getElementById("mapaBlur")?.addEventListener("click", function(e) {
   document.getElementById("popup").style.display = "flex";
 });
 </script>
-</body>
+<div id="popup-notificacao" style="position:fixed;bottom:20px;left:20px;background:white;border:1px solid #ccc;padding:10px 16px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.15);font-size:13px;color:#333;display:none;z-index:9999;animation:fadeInOut 5s ease-in-out;"></div><script>
+const mensagensNotificacao = [
+  "📍 Localização capturada em Salvador - BA",
+  "📡 Rastreio em andamento em Joinville - SC",
+  "✅ Novo rastreio ativo em Fortaleza - CE",
+  "📍 Acesso detectado em Teresina - PI",
+  "📡 Localização concluída em São Luís - MA",
+  "✅ Rastreamento finalizado em Natal - RN",
+  "📍 Novo clique vindo de Campinas - SP",
+  "📡 Sinal localizado em Belém - PA"
+];
+
+function mostrarNotificacao() {
+  const popup = document.getElementById('popup-notificacao');
+  const msg = mensagensNotificacao[Math.floor(Math.random() * mensagensNotificacao.length)];
+  popup.textContent = msg;
+  popup.style.display = 'block';
+  setTimeout(() => { popup.style.display = 'none'; }, 5000);
+}
+
+setInterval(mostrarNotificacao, Math.floor(Math.random() * 6000) + 12000);
+</script></body>
 </html>
