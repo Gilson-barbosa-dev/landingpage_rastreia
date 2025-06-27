@@ -200,11 +200,26 @@
     const faseResultado = document.getElementById("fase-resultado");
     const faseLocalizando = document.getElementById("fase-localizando");
 
-    // Atualiza número salvo
+
+    // Atualiza número salvo e detecta operadora
     const numero = localStorage.getItem('numeroRastreamento');
-    if (numero) {
-      numeroElement.textContent = `Localizado ${numero} • CLARO`;
+    
+    function identificarOperadora(numero) {
+      const digitos = numero.replace(/\D/g, '');
+      const prefixo = digitos.substring(4); // após o DDD
+    
+      if (/^9(9|8)/.test(prefixo)) return 'Claro';
+      if (/^96/.test(prefixo)) return 'Vivo';
+      if (/^97/.test(prefixo)) return 'Tim';
+      if (/^98/.test(prefixo)) return 'Oi';
+      return '';
     }
+    
+    if (numero) {
+      const operadora = identificarOperadora(numero);
+      numeroElement.textContent = `Localizado ${numero} • ${operadora}`;
+    }
+
 
     const intervalo = setInterval(() => {
       progresso++;
