@@ -7,10 +7,10 @@
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="Ferramenta de Localização Inteligente" property="og:title"/>
 <meta content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." property="og:description"/>
-<meta content="https://www.minhafoto.xyz/static/images/preview.jpg" property="og:image">
-<meta content="https://www.minhafoto.xyz" property="og:url">
-<meta content="website" property="og:type"/>
-<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description"/>
+<meta content="https://www.minhafoto.xyz/static/images/preview.jpg" property="og:image"/>
+<meta content="https://www.minhafoto.xyz" property="og:url"/>
+<meta content="website" property="og:type">
+<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description">
 <!-- Meta Pixel -->
 <script>
     !function(f,b,e,v,n,t,s)
@@ -108,7 +108,32 @@
       color: #888;
       margin-top: 8px;
     }
-  </style>
+  
+.depoimentos {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+}
+.depoimento {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.depoimento img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.depoimento .texto { font-size: 13px; color: #333; }
+.depoimento .nome { font-weight: bold; font-size: 13px; }
+.estrelas { color: #fbc02d; font-size: 14px; margin-bottom: 2px; }
+</style>
 </meta></meta></head>
 <body>
 <img alt="Logo Rastreio Parceiro" class="logo" src="static/images/logo.svg"/>
@@ -125,7 +150,6 @@
 <img alt="Mapa" class="mapa-blur" id="mapaBlur" src="static/images/mapa_blur.png"/>
 </a>
 <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-
 <div class="depoimentos">
 <div class="depoimento">
 <img alt="Usuário" src="static/images/mulher1.jpg"/>
