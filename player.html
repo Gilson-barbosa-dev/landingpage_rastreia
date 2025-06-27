@@ -77,6 +77,7 @@
       color: #888;
       margin-top: 8px;
     }
+
     /* Pop-up */
     #popup {
       display: none;
@@ -133,19 +134,19 @@
     <h2 style="margin-top: 10px;" id="numero-rastreado">Rastreando número...</h2>
     <img src="static/images/mapa_blur.png" alt="Mapa" class="mapa-blur" id="mapaBlur">
     <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
-    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPR8LL">🔓 Desbloquear acesso seguro</a>
+    <a class="cta" href="https://go.perfectpay.com.br/PPU38CPRCN8">🔓 Desbloquear acesso seguro por R$ 19,90</a>
     <p class="aviso-pagamento">Pagamento único para desbloquear o mapa completo</p>
     <div class="rodape">
       🔒 Dados criptografados | 🕑 Última atualização há poucos segundos
     </div>
   </div>
 
-  <!-- Pop-up de pagamento -->
+  <!-- Pop-up com variações -->
   <div id="popup">
     <div class="content">
       <h3>🔒 Acesso restrito</h3>
-      <p>Para visualizar a localização completa, é necessário desbloquear por apenas <strong>R$ 9,97</strong>.</p>
-      <a href="https://go.perfectpay.com.br/PPU38CPR8LL" class="cta">Desbloquear agora</a>
+      <p id="mensagemPopup">Carregando mensagem...</p>
+      <a href="https://go.perfectpay.com.br/PPU38CPRCN8" class="cta">Desbloquear agora</a>
       <button onclick="document.getElementById('popup').style.display='none'">Cancelar</button>
     </div>
   </div>
@@ -186,9 +187,17 @@
       }
     }, 60);
 
-    // Abertura do pop-up ao clicar no mapa
+    // POP-UP dinâmica
+    const mensagens = [
+      "📍 Localização encontrada<br>Só essa semana ela já esteve nesse local <strong>2 vezes</strong>...<br>Desbloqueie por apenas <strong>R$ 19,90</strong> para ver agora.",
+      "📍 Rastreamento finalizado<br>Esse mesmo endereço apareceu <strong>mais de uma vez</strong> nos últimos dias.<br>Desbloqueie por <strong>R$ 19,90</strong> e veja agora.",
+      "🕵️‍♀️ Tem algo estranho nesse endereço...<br>Não é a primeira vez que ela vai até lá.<br>Quer saber onde é? Apenas <strong>R$ 19,90</strong>."
+    ];
+
     document.getElementById("mapaBlur").addEventListener("click", function(e) {
       e.preventDefault();
+      const randomIndex = Math.floor(Math.random() * mensagens.length);
+      document.getElementById("mensagemPopup").innerHTML = mensagens[randomIndex];
       document.getElementById("popup").style.display = "flex";
     });
   </script>
