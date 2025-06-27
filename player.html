@@ -122,7 +122,7 @@
 <div class="fase-escondida" id="fase-resultado">
 <h2 id="numero-rastreado" style="margin-top: 10px;">Rastreando número...</h2>
 <a href="https://go.perfectpay.com.br/PPU38CPR8LL">
-
+<img alt="Mapa" class="mapa-blur" id="mapaBlur" src="static/images/mapa_blur.png"/>
 </a>
 <p style="color: #2e7d32; font-style: italic; margin: 0;">✅ Localização obtida com sucesso!</p>
 <a class="cta" href="https://go.perfectpay.com.br/PPU38CPRCN8">🔓 Desbloquear Agora por R$ 19,90 – Válido por tempo limitado!</a>
@@ -179,28 +179,30 @@
 <button onclick="document.getElementById('popup').style.display='none'" style="margin-top:10px; background:none; border:none; color:#888; text-decoration:underline; cursor:pointer;">Cancelar</button>
 </div>
 </div>
-<script>
-const mensagens = [
-  {
-    texto: `📍 <strong>Localização encontrada:</strong> só essa semana ela já esteve nesse local <strong>2&nbsp;vezes</strong>.<br><br>Desbloqueie por apenas <strong>R$ 19,90</strong> para ver agora.`,
-    id: "copy1"
-  },
-  {
-    texto: `📍 <strong>Rastreamento finalizado:</strong> esse mesmo endereço apareceu <strong>mais de uma vez</strong> nos últimos dias.<br><br>Desbloqueie por <strong>R$ 19,90</strong> e veja agora.`,
-    id: "copy2"
-  },
-  {
-    texto: `🕵️‍♀️ <strong>Tem algo estranho nesse endereço...</strong> não foi a primeira vez que ela esteve lá.<br><br>Quer saber onde é? Apenas <strong>R$ 19,90</strong>.`,
-    id: "copy3"
-  }
-];
 
-document.getElementById("mapaBlur")?.addEventListener("click", function(e) {
-  e.preventDefault();
-  const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
-  document.getElementById("mensagemPopup").innerHTML = msg.texto;
-  document.getElementById("popupContent").setAttribute("data-copy-version", msg.id);
-  document.getElementById("popup").style.display = "flex";
-});
-</script></body>
+<script>
+  const mensagens = [
+    {
+      texto: `📍 <strong>Localização encontrada:</strong> só essa semana ela já esteve nesse local <strong>2&nbsp;vezes</strong>.<br><br>Desbloqueie por apenas <strong>R$ 19,90</strong> para ver agora.`,
+      id: "copy1"
+    },
+    {
+      texto: `📍 <strong>Rastreamento finalizado:</strong> esse mesmo endereço apareceu <strong>mais de uma vez</strong> nos últimos dias.<br><br>Desbloqueie por <strong>R$ 19,90</strong> e veja agora.`,
+      id: "copy2"
+    },
+    {
+      texto: `🕵️‍♀️ <strong>Tem algo estranho nesse endereço...</strong> não foi a primeira vez que ela esteve lá.<br><br>Quer saber onde é? Apenas <strong>R$ 19,90</strong>.`,
+      id: "copy3"
+    }
+  ];
+
+  document.getElementById("mapaBlur")?.addEventListener("click", function(e) {
+    e.preventDefault();
+    const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+    document.getElementById("mensagemPopup").innerHTML = msg.texto;
+    document.getElementById("popupContent").setAttribute("data-copy-version", msg.id);
+    document.getElementById("popup").style.display = "flex";
+  });
+</script>
+</body>
 </html>
