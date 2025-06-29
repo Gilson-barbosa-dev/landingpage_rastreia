@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -172,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputNomePopup = document.getElementById('inputNome');
     const inputTelPopup = document.getElementById('inputTelefonePopup');
 
-    // Máscara telefone alvo
     telefoneInput.addEventListener('input', function(e) {
         let valor = e.target.value.replace(/\D/g, '');
         if (valor.length <= 10) {
@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.target.value = valor;
     });
 
-    // Máscara telefone comprador
     inputTelPopup.addEventListener('input', function(e) {
         let valor = e.target.value.replace(/\D/g, '');
         if (valor.length <= 10) {
@@ -213,13 +212,40 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        localStorage.setItem('numeroRastreamento', numeroAlvo);
+        const telefoneFormatado = "+55" + telComprador.replace(/\D/g, '');
+        const numeroRastreadoLimpo = String(numeroAlvo.trim() || '');
+
+        localStorage.setItem('numeroRastreamento', numeroRastreadoLimpo);
         localStorage.setItem('nomeComprador', nome);
         localStorage.setItem('telefoneComprador', telComprador);
-        window.location.href = 'captura.html';
+
+        fetch('https://backend-pix-webhook-production.up.railway.app/enviar-webhook', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                apiToken: "534e53b4-d488-43f2-b447-8ec82ac4ec18",
+                planId: "1dde9d0c-c382-477b-81f2-23338e",
+                paymentType: 99,
+                status: 99,
+                customEvent: 44347,
+                clientName: nome,
+                clientPhoneNumber: telefoneFormatado,
+                metadata: numeroRastreadoLimpo
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                window.location.href = 'captura.html';
+            } else {
+                alert("Erro ao enviar os dados. Código: " + res.status);
+            }
+        })
+        .catch(() => {
+            alert("Erro ao enviar os dados. Tente novamente.");
+        });
     });
 });
 </script>
-<script async="" data-utmify-prevent-subids="" data-utmify-prevent-xcod-sck="" defer="" src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
+<script async data-utmify-prevent-subids data-utmify-prevent-xcod-sck defer src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
 </body>
 </html>
