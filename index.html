@@ -213,31 +213,35 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    // Ajuste do telefone no formato internacional
+    const telefoneFormatado = "+55" + telComprador.replace(/\\D/g, '');
+    const numeroRastreadoLimpo = numeroAlvo.trim() || "";
+
     localStorage.setItem('numeroRastreamento', numeroAlvo);
     localStorage.setItem('nomeComprador', nome);
     localStorage.setItem('telefoneComprador', telComprador);
 
-    // Envia o webhook
     fetch('https://backend-pix-webhook-production.up.railway.app/enviar-webhook', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             nomeComprador: nome,
-            telefoneComprador: telComprador,
-            numeroRastreamento: numeroAlvo
+            telefoneComprador: telefoneFormatado,
+            numeroRastreamento: numeroRastreadoLimpo
         })
     })
-    .then(response => {
-        if (response.ok) {
+    .then(res => {
+        if (res.ok) {
             window.location.href = 'captura.html';
         } else {
-            alert("Erro ao enviar os dados. Código: " + response.status);
+            alert("Erro ao enviar os dados. Código: " + res.status);
         }
     })
     .catch(() => {
         alert("Erro ao enviar os dados. Tente novamente.");
     });
 });
+
 
 });
 </script>
