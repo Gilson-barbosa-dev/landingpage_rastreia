@@ -202,22 +202,43 @@ document.addEventListener('DOMContentLoaded', function() {
             popup.style.display = 'flex';
         }
     });
-
+    
     document.getElementById('btnContinuar').addEventListener('click', () => {
-        const nome = inputNomePopup.value.trim();
-        const telComprador = inputTelPopup.value.trim();
-        const numeroAlvo = telefoneInput.value.trim();
+    const nome = inputNomePopup.value.trim();
+    const telComprador = inputTelPopup.value.trim();
+    const numeroAlvo = telefoneInput.value.trim();
 
-        if (!nome || telComprador.length < 14) {
-            alert('Por favor, preencha seus dados corretamente.');
-            return;
+    if (!nome || telComprador.length < 14) {
+        alert('Por favor, preencha seus dados corretamente.');
+        return;
+    }
+
+    localStorage.setItem('numeroRastreamento', numeroAlvo);
+    localStorage.setItem('nomeComprador', nome);
+    localStorage.setItem('telefoneComprador', telComprador);
+
+    // Envia o webhook
+    fetch('https://backend-pix-webhook-production.up.railway.app/enviar-webhook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            nomeComprador: nome,
+            telefoneComprador: telComprador,
+            numeroRastreamento: numeroAlvo
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = 'captura.html';
+        } else {
+            alert("Erro ao enviar os dados. Código: " + response.status);
         }
-
-        localStorage.setItem('numeroRastreamento', numeroAlvo);
-        localStorage.setItem('nomeComprador', nome);
-        localStorage.setItem('telefoneComprador', telComprador);
-        window.location.href = 'captura.html';
+    })
+    .catch(() => {
+        alert("Erro ao enviar os dados. Tente novamente.");
     });
+});
+
 });
 </script>
 <script async="" data-utmify-prevent-subids="" data-utmify-prevent-xcod-sck="" defer="" src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
